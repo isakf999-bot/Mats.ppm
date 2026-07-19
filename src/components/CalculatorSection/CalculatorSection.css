@@ -1,0 +1,152 @@
+.calc__head {
+  max-width: 760px;
+  margin-bottom: var(--space-6);
+}
+
+.calc__intro {
+  color: var(--color-body);
+  margin-top: var(--space-3);
+}
+
+.calc__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: var(--space-5);
+  align-items: stretch;
+}
+
+/* ---- Slider-panel ---- */
+.calc__panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-5);
+  box-shadow: var(--shadow-card);
+}
+
+.calc-field__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+.calc-field__top label {
+  font-size: var(--fs-small);
+  color: var(--color-body);
+}
+.calc-field__value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-small);
+  color: var(--color-navy);
+  background: var(--color-bg-light);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+/* Custom range */
+.calc-field__range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(
+    to right,
+    var(--color-gold) 0%,
+    var(--color-gold) var(--pct),
+    var(--color-border) var(--pct),
+    var(--color-border) 100%
+  );
+  cursor: pointer;
+  outline-offset: 6px;
+}
+.calc-field__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  border: 3px solid var(--color-gold);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--dur) var(--ease);
+}
+.calc-field__range::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+.calc-field__range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  border: 3px solid var(--color-gold);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---- Resultatruta ---- */
+.calc__result {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-navy);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  box-shadow: var(--shadow-lg);
+}
+
+.calc__result-glow {
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(242, 168, 29, 0.22) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.calc__result-label {
+  position: relative;
+  font-size: var(--fs-small);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.calc__result-amount {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-white);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.calc__result .btn {
+  position: relative;
+  align-self: flex-start;
+}
+
+.calc__result-note {
+  position: relative;
+  font-size: var(--fs-caption);
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 860px) {
+  .calc__grid {
+    grid-template-columns: 1fr;
+  }
+  .calc__result-amount {
+    font-size: 2.5rem;
+  }
+}

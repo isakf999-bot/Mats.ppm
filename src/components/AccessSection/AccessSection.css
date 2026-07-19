@@ -1,0 +1,106 @@
+.access {
+  background: var(--color-bg-light);
+}
+
+.access__inner .section-heading {
+  margin-bottom: var(--space-6);
+}
+
+.access__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.access-card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.access-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-border-strong);
+}
+
+.access-card__index {
+  display: block;
+  width: 40px;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--color-gold);
+  margin-bottom: var(--space-3);
+}
+
+.access-card__title {
+  font-size: var(--fs-h4);
+  margin-bottom: var(--space-2);
+}
+
+.access-card__text {
+  color: var(--color-body);
+  font-size: var(--fs-small);
+}
+
+/* ---- Brett highlight-kort ---- */
+.access-feature {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+}
+
+.access-feature__title {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-3);
+}
+
+.access-feature__text {
+  color: var(--color-body);
+  font-size: var(--fs-small);
+  margin-bottom: var(--space-3);
+}
+.access-feature__text:last-child {
+  margin-bottom: 0;
+}
+
+.access-feature__media {
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.access-feature__img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 860px) {
+  .access__grid {
+    grid-template-columns: 1fr;
+  }
+  .access-feature {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    padding: var(--space-5);
+  }
+  .access-feature__media {
+    order: -1;
+    max-width: 220px;
+    margin-inline: auto;
+  }
+}

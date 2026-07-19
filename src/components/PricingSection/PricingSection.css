@@ -1,0 +1,215 @@
+.pricing__inner .section-heading {
+  margin-bottom: var(--space-5);
+}
+
+/* ---- Toggle ---- */
+.pricing__toggle {
+  display: inline-flex;
+  gap: 4px;
+  padding: 5px;
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  margin-inline: auto;
+  margin-bottom: var(--space-6);
+  width: fit-content;
+  box-shadow: inset 0 1px 3px rgba(16, 31, 61, 0.06);
+}
+
+.pricing__toggle {
+  display: flex;
+}
+.pricing__inner {
+  text-align: center;
+}
+.pricing__inner > *:not(.pricing__toggle):not(.section-heading) {
+  text-align: left;
+}
+
+.pricing__toggle-btn {
+  padding: 10px 24px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-body);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+/* Aktiv flik: ser ut precis som hover-läget (orange text + gul bakgrund)
+   så man permanent ser vilken period man står på */
+.pricing__toggle-btn.is-active {
+  background: rgba(242, 168, 29, 0.14);
+  color: var(--color-gold-hover);
+}
+
+/* Hover på inaktiv flik: gul tint + färgbyte så det syns att den är klickbar */
+.pricing__toggle-btn:not(.is-active):hover {
+  background: rgba(242, 168, 29, 0.14);
+  color: var(--color-gold-hover);
+}
+.pricing__toggle-btn:not(.is-active):active {
+  transform: scale(0.97);
+}
+
+/* Hover på den AKTIVA fliken: lyser också orange så den inte känns död */
+.pricing__toggle-btn.is-active:hover {
+  color: var(--color-gold-hover);
+}
+
+/* ---- Grid ---- */
+.pricing__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  align-items: center; /* centrerat så det större kortet sticker ut lika mycket upp som ner */
+}
+
+.price-card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.price-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.price-card--featured {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-lg);
+  /* Extra höjd upp och ner (utöver de andra korten), centrerat via grid align-items */
+  padding-block: var(--space-7);
+  transform: scale(1.04);
+}
+.price-card--featured:hover {
+  transform: scale(1.04) translateY(-4px);
+}
+
+.price-card__badge {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-gold);
+  color: #2a1c00;
+  font-family: var(--font-display);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+}
+
+.price-card__header {
+  margin-bottom: var(--space-3);
+  padding-right: 90px;
+}
+
+.price-card__name {
+  font-size: var(--fs-lead);
+  color: var(--color-ink);
+}
+.price-card--featured .price-card__name {
+  color: var(--color-white);
+}
+
+.price-card__subtitle {
+  font-size: var(--fs-caption);
+  color: var(--color-muted);
+  margin-top: 2px;
+}
+.price-card--featured .price-card__subtitle {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.price-card__desc {
+  font-size: var(--fs-caption);
+  color: var(--color-body);
+  margin-bottom: var(--space-4);
+  min-height: 40px;
+}
+.price-card--featured .price-card__desc {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.price-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: var(--space-4);
+}
+.price-card__amount {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+}
+.price-card--featured .price-card__amount {
+  color: var(--color-white);
+}
+.price-card__period {
+  font-size: var(--fs-small);
+  color: var(--color-muted);
+}
+.price-card--featured .price-card__period {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.price-card__included {
+  margin-block: var(--space-4) var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.price-card--featured .price-card__included {
+  color: var(--color-white);
+}
+
+.price-card__features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.price-card__features li {
+  display: flex;
+  gap: 10px;
+  font-size: var(--fs-caption);
+  color: var(--color-body);
+  line-height: 1.5;
+}
+.price-card--featured .price-card__features li {
+  color: rgba(255, 255, 255, 0.8);
+}
+.price-card__features svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  color: var(--color-gold-hover);
+}
+.price-card--featured .price-card__features svg {
+  color: var(--color-gold);
+}
+
+@media (max-width: 960px) {
+  .pricing__grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+  .price-card--featured {
+    transform: none;
+  }
+  .price-card--featured:hover {
+    transform: translateY(-4px);
+  }
+}

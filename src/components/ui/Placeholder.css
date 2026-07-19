@@ -1,0 +1,85 @@
+.ph {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #eef0f6 0%, #e3e6f1 100%);
+  border: 1px solid var(--color-border);
+  color: var(--color-navy);
+}
+
+.ph--photo {
+  background: linear-gradient(150deg, #23252e 0%, #14161c 100%);
+  color: rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.ph--news {
+  background: linear-gradient(135deg, #f5e9e0 0%, #f0d9c8 100%);
+  color: #9a5b32;
+}
+
+.ph--video {
+  background: linear-gradient(150deg, #2b2d38 0%, #1a1c24 100%);
+  color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.ph--screen {
+  background: linear-gradient(150deg, #1c1030 0%, #10061f 100%);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.ph__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(22, 41, 77, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 41, 77, 0.04) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.7;
+}
+
+.ph__body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  padding: var(--space-3);
+}
+
+.ph__icon {
+  width: 34px;
+  height: 34px;
+  opacity: 0.8;
+}
+
+.ph__label {
+  font-family: var(--font-display);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  max-width: 220px;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+.ph__play {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-pill);
+  background: var(--color-gold);
+  color: #2a1c00;
+  box-shadow: var(--shadow-gold);
+}
+.ph__play svg {
+  width: 26px;
+  height: 26px;
+  margin-left: 3px;
+}

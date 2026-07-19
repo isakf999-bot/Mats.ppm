@@ -1,0 +1,84 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 26px;
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
+    background var(--dur) var(--ease), color var(--dur) var(--ease);
+  white-space: nowrap;
+}
+
+.btn__arrow {
+  width: 16px;
+  height: 12px;
+  transition: transform var(--dur) var(--ease);
+}
+.btn:hover .btn__arrow {
+  transform: translateX(4px);
+}
+
+.btn--full {
+  width: 100%;
+}
+
+/* Primär — guld */
+.btn--primary {
+  background: var(--color-gold);
+  color: #2a1c00;
+  box-shadow: var(--shadow-gold);
+}
+.btn--primary:hover {
+  background: var(--color-gold-hover);
+  transform: translateY(-2px);
+}
+.btn--primary:active {
+  transform: translateY(0);
+}
+
+/* Navy — mörkblå */
+.btn--navy {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+.btn--navy:hover {
+  background: var(--color-navy-hover);
+  transform: translateY(-2px);
+}
+.btn--navy:active {
+  transform: translateY(0);
+}
+
+/* Sekundär — outline */
+.btn--secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1.5px solid var(--color-border-strong);
+}
+.btn--secondary:hover {
+  border-color: var(--color-navy);
+  color: var(--color-navy);
+  background: rgba(22, 41, 77, 0.03);
+}
+
+/* Ghost — text-lik */
+.btn--ghost {
+  background: transparent;
+  color: var(--color-navy);
+  padding-inline: 8px;
+}
+.btn--ghost:hover {
+  color: var(--color-gold-hover);
+}
+
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  opacity: 0.5;
+  pointer-events: none;
+}

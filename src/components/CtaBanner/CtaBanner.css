@@ -1,0 +1,29 @@
+.cta-banner {
+  background: var(--color-bg-lavender);
+}
+
+.cta-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.cta-banner__title {
+  font-size: var(--fs-h3);
+  color: var(--color-ink);
+  max-width: 640px;
+  line-height: 1.25;
+}
+
+.cta-banner__inner .btn {
+  flex-shrink: 0;
+}
+
+@media (max-width: 760px) {
+  .cta-banner__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+}

@@ -1,0 +1,99 @@
+/* ============================================================
+   THEME TOKENS — Mats Svensson
+   Central färgpalett, typografi och spacing. Alla komponent-CSS
+   refererar till dessa variabler, aldrig hårdkodade hex-värden.
+   Färgerna är uppskattade från Figma-designen — justera vid behov.
+   ============================================================ */
+
+:root {
+  /* ---- Färger: bas ---- */
+  --color-black: #0a0a0b;          /* hero-bakgrund */
+  --color-ink: #1a1a22;            /* primär textfärg (rubriker) */
+  --color-body: #4b4b57;           /* brödtext */
+  --color-muted: #8a8a97;          /* dämpad text / captions */
+
+  --color-white: #ffffff;
+  --color-surface: #ffffff;        /* kort på vit sektion */
+  --color-bg-light: #f4f4f6;       /* ljusgrå sektionsbakgrund */
+  --color-bg-lavender: #e8e6f4;    /* lavendel-sektion */
+  --color-bg-cream: #fbf4e4;       /* creme info-sektion */
+
+  /* ---- Färger: brand ---- */
+  --color-navy: #16294d;           /* mörkblå (footer, resultatruta, priskort-knappar) */
+  --color-navy-deep: #101f3d;
+  --color-navy-hover: #1e376a;
+  --color-gold: #f2a81d;           /* gul/guld accent (CTA) */
+  --color-gold-hover: #d9950f;
+  --color-gold-soft: #f7c65a;
+
+  /* ---- Borders & linjer ---- */
+  --color-border: #e4e4ec;
+  --color-border-soft: rgba(22, 41, 77, 0.08);
+  --color-border-strong: #d3d3dd;
+  --color-hairline: rgba(22, 41, 77, 0.06);
+
+  /* ---- Status ---- */
+  --color-positive: #1f9d6b;
+  --color-negative: #d9534f;
+
+  /* ---- Radius-skala ---- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---- Skuggor (mjuka, lagerbaserade: kontakt + ambient) ---- */
+  --shadow-sm:
+    0 1px 2px rgba(16, 31, 61, 0.05),
+    0 1px 1px rgba(16, 31, 61, 0.03);
+  --shadow-md:
+    0 2px 4px rgba(16, 31, 61, 0.04),
+    0 12px 28px -6px rgba(16, 31, 61, 0.12);
+  --shadow-lg:
+    0 4px 10px rgba(16, 31, 61, 0.05),
+    0 26px 56px -12px rgba(16, 31, 61, 0.18);
+  --shadow-gold: 0 10px 30px rgba(242, 168, 29, 0.28);
+
+  /* Kort: vilo- och hover-läge (subtil upphöjning i vila, tydligt lyft vid hover) */
+  --shadow-card:
+    0 1px 2px rgba(16, 31, 61, 0.04),
+    0 6px 16px -6px rgba(16, 31, 61, 0.08);
+  --shadow-card-hover:
+    0 3px 6px rgba(16, 31, 61, 0.05),
+    0 18px 40px -10px rgba(16, 31, 61, 0.16);
+
+  /* ---- Spacing-skala (4/8/16/24/32/48/64/96) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+  --space-9: 128px;
+
+  /* ---- Typografi ---- */
+  --font-display: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* Typescale (~1.25 ratio) */
+  --fs-caption: 0.8125rem;   /* 13px */
+  --fs-small: 0.9375rem;     /* 15px */
+  --fs-body: 1.0625rem;      /* 17px */
+  --fs-lead: 1.1875rem;      /* 19px */
+  --fs-h4: 1.375rem;         /* 22px */
+  --fs-h3: 1.75rem;          /* 28px */
+  --fs-h2: 2.375rem;         /* 38px */
+  --fs-h1: 3.125rem;         /* 50px */
+
+  /* ---- Layout ---- */
+  --container: 1160px;
+  --container-narrow: 940px;
+  --nav-height: 76px;
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 220ms;
+}

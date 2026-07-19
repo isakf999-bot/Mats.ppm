@@ -1,0 +1,23 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo__img {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+/* På mörk bakgrund (footer): färga hela loggan i brand-guld via filterkedja
+   (brightness(0) → svart, sedan colorize mot ~#f2a81d) så den syns mot navy
+   och behåller sin gyllene karaktär. */
+.logo--light .logo__img {
+  filter: brightness(0) saturate(100%) invert(69%) sepia(53%) saturate(1352%)
+    hue-rotate(358deg) brightness(101%) contrast(96%);
+}
+
+/* Footern använder en något större logga */
+.footer .logo__img {
+  height: 84px;
+}

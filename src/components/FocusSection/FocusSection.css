@@ -1,0 +1,95 @@
+.focus__inner .section-heading {
+  margin-bottom: var(--space-6);
+}
+
+.focus__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+.focus-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.focus-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-border-strong);
+}
+
+.focus-card__icon {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-md);
+  background: rgba(242, 168, 29, 0.14);
+  color: var(--color-gold-hover);
+  margin-bottom: var(--space-4);
+}
+.focus-card__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.focus-card__title {
+  font-size: var(--fs-h4);
+  margin-bottom: var(--space-2);
+}
+
+.focus-card__text {
+  color: var(--color-body);
+  font-size: var(--fs-small);
+  margin-bottom: var(--space-3);
+}
+.focus-card__text strong {
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+.focus-card__note {
+  color: var(--color-muted);
+  font-size: var(--fs-caption);
+  margin-bottom: var(--space-4);
+}
+
+.focus-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  color: var(--color-navy);
+  transition: gap var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.focus-card__link svg {
+  width: 15px;
+  height: 11px;
+  transition: transform var(--dur) var(--ease);
+}
+.focus-card__link:hover {
+  color: var(--color-gold-hover);
+}
+.focus-card__link:hover svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 760px) {
+  .focus__grid {
+    grid-template-columns: 1fr;
+  }
+  .focus-card {
+    padding: var(--space-5);
+  }
+}

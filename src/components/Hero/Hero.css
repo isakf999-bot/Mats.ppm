@@ -1,0 +1,147 @@
+.hero {
+  position: relative;
+  background: #000;
+  color: var(--color-white);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Bakgrundsbild (Mats) — sitter till höger, svart smälter ihop med hero-bg.
+   translateX skjuter Mats längre åt höger; contrast/brightness "crushar"
+   den gråsvarta fotobakgrunden mot rent svart så den möter #000 sömlöst. */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  transform: translateX(16%);
+  z-index: -3;
+}
+
+/* Scrim: mörk gradient från vänster som garanterar textkontrast (WCAG) */
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-black) 0%,
+    var(--color-black) 26%,
+    rgba(10, 10, 11, 0.85) 42%,
+    rgba(10, 10, 11, 0.2) 62%,
+    transparent 78%
+  );
+  z-index: -2;
+}
+
+.hero__glow {
+  position: absolute;
+  top: -28%;
+  left: 12%;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(242, 168, 29, 0.15) 0%, transparent 62%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 620px;
+  padding-block: var(--space-8);
+}
+
+.hero__content {
+  max-width: 560px;
+}
+
+.hero__title {
+  color: var(--color-white);
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  line-height: 1.08;
+  margin-bottom: var(--space-4);
+}
+
+.hero__title-accent {
+  color: var(--color-gold);
+}
+
+.hero__text {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  margin-bottom: var(--space-3);
+}
+
+.hero__text--muted {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--fs-body);
+}
+
+.hero__actions {
+  margin-top: var(--space-5);
+}
+
+/* ---- Tablet: bilden blir mindre dominant, starkare scrim ---- */
+@media (max-width: 900px) {
+  .hero__bg {
+    background-size: cover;
+    background-position: 72% center;
+    transform: translateX(4%);
+    opacity: 0.55;
+  }
+  .hero__scrim {
+    background: linear-gradient(
+      90deg,
+      var(--color-black) 0%,
+      rgba(10, 10, 11, 0.75) 55%,
+      rgba(10, 10, 11, 0.55) 100%
+    );
+  }
+  .hero__inner {
+    min-height: 520px;
+    padding-block: var(--space-7);
+  }
+}
+
+/* ---- Mobil: Mats i eget bildfält högst upp (helt synlig), text under på svart ---- */
+@media (max-width: 600px) {
+  /* Bilden blir ett band högst upp istället för att täcka hela heron */
+  .hero__bg {
+    inset: 0 0 auto 0;
+    height: 320px;
+    background-position: 66% center;
+    background-size: cover;
+    transform: none;
+    opacity: 1;
+  }
+  /* Scrim tonar bara bandets nederkant ner i svart så det möter texten sömlöst */
+  .hero__scrim {
+    inset: 0 0 auto 0;
+    height: 320px;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 52%,
+      rgba(10, 10, 11, 0.7) 82%,
+      var(--color-black) 100%
+    );
+  }
+  .hero__glow {
+    display: none;
+  }
+  /* Texten flödar under bildbandet på solid svart bakgrund */
+  .hero__inner {
+    display: block;
+    min-height: 0;
+    padding-top: 300px;
+    padding-bottom: var(--space-7);
+  }
+  .hero__content {
+    max-width: none;
+  }
+}

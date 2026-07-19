@@ -1,0 +1,277 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.navbar--scrolled {
+  border-bottom-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar__inner {
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* Navigationen skjuts långt ut åt höger, mot sidans högra kant (inte
+   container-kanten). --nav-edge-gap styr avståndet från kanten. */
+.navbar {
+  --nav-edge-gap: 0rem;
+}
+.navbar__nav {
+  margin-left: auto;
+  margin-right: calc(var(--nav-edge-gap) - 50vw + 50%);
+}
+.navbar__actions {
+  margin-left: auto;
+}
+
+.navbar__brand {
+  display: inline-flex;
+  transition: opacity var(--dur) var(--ease);
+}
+.navbar__brand:hover {
+  opacity: 0.75;
+}
+
+/* ---- Desktop-nav ---- */
+.navbar__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.navbar__item {
+  position: relative;
+}
+
+.navbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--color-body);
+  border-radius: var(--radius-sm);
+  transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.navbar__link:hover {
+  color: var(--color-ink);
+  background: rgba(22, 41, 77, 0.05);
+}
+
+.navbar__chevron {
+  width: 10px;
+  height: 7px;
+  transition: transform var(--dur) var(--ease);
+}
+
+.navbar__item--has-menu:hover .navbar__chevron {
+  transform: rotate(180deg);
+}
+
+/* ---- Hover-dropdown ---- */
+.navbar__dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 232px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility var(--dur);
+}
+
+.navbar__item--has-menu:hover .navbar__dropdown,
+.navbar__item--has-menu:focus-within .navbar__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.navbar__dropdown-link {
+  display: block;
+  padding: 10px 12px;
+  font-size: var(--fs-small);
+  color: var(--color-body);
+  border-radius: var(--radius-sm);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.navbar__dropdown-link:hover {
+  background: var(--color-bg-light);
+  color: var(--color-navy);
+}
+
+/* ---- Actions ---- */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.navbar__search {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  color: var(--color-body);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.navbar__search svg {
+  width: 20px;
+  height: 20px;
+}
+.navbar__search:hover {
+  background: rgba(22, 41, 77, 0.06);
+  color: var(--color-ink);
+}
+
+/* ---- Burger ---- */
+.navbar__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 0 9px;
+  border-radius: var(--radius-sm);
+}
+.navbar__burger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--color-ink);
+  border-radius: 2px;
+  transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+.navbar__burger.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar__burger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.navbar__burger.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---- Mobil meny ---- */
+.navbar__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 98;
+  background: rgba(10, 10, 15, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  cursor: default;
+  transition: opacity 0.3s var(--ease), visibility 0.3s;
+}
+.navbar__backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.navbar__mobile {
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background: var(--color-white);
+  padding: var(--space-4);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  transform: translateX(100%);
+  transition: transform 0.35s var(--ease), visibility 0.35s;
+  visibility: hidden;
+}
+.navbar__mobile.is-open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+/* Dölj backdrop på desktop där menyn inte används */
+@media (min-width: 941px) {
+  .navbar__backdrop,
+  .navbar__mobile {
+    display: none;
+  }
+}
+
+.navbar__mobile-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar__mobile-link,
+.navbar__mobile-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-3) var(--space-1);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  text-align: left;
+}
+.navbar__mobile-toggle svg {
+  width: 14px;
+  height: 9px;
+  transition: transform var(--dur) var(--ease);
+}
+.navbar__mobile-toggle svg.rot {
+  transform: rotate(180deg);
+}
+
+.navbar__mobile-sub {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s var(--ease);
+}
+.navbar__mobile-sub.is-open {
+  grid-template-rows: 1fr;
+}
+/* Ett enda barn med overflow:hidden + min-height:0 krävs för att
+   0fr/1fr-kollapsen ska fungera korrekt med flera länkar */
+.navbar__mobile-sub-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+.navbar__mobile-sub a {
+  display: block;
+  padding: 12px var(--space-3);
+  color: var(--color-body);
+  font-size: var(--fs-small);
+}
+.navbar__mobile-sub a:first-child {
+  padding-top: 4px;
+}
+
+@media (max-width: 940px) {
+  .navbar__nav {
+    display: none;
+  }
+  .navbar__burger {
+    display: flex;
+  }
+}

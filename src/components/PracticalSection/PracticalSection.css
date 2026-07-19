@@ -1,0 +1,70 @@
+.practical {
+  background: var(--color-bg-light);
+}
+
+.practical__inner {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: var(--space-7);
+}
+
+.practical__media {
+  max-width: 380px;
+}
+
+.practical__illustration {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.practical__content .eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+.practical__intro {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-block: var(--space-4) var(--space-3);
+}
+
+.practical__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.practical__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  color: var(--color-body);
+}
+
+.practical__check {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-pill);
+  background: rgba(242, 168, 29, 0.16);
+  color: var(--color-gold-hover);
+}
+.practical__check svg {
+  width: 15px;
+  height: 15px;
+}
+
+@media (max-width: 860px) {
+  .practical__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  .practical__media {
+    max-width: 300px;
+  }
+}
