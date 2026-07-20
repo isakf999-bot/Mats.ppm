@@ -9,7 +9,7 @@ export default function OmMats() {
 
   return (
     <>
-      <PageHero eyebrow="Om" title="Vem är Mats Svensson?" />
+      <PageHero eyebrow="Om" title="Vem är Mats Svensson?" align="left" />
 
       <section className="section">
         <div ref={ref} className="container reveal om-mats__inner">

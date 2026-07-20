@@ -16,6 +16,7 @@ export default function Statistik() {
         eyebrow="Resultat"
         title="Statistik"
         text="Total avkastning i procent."
+        align="left"
       />
 
       <section className="section">

@@ -118,7 +118,7 @@ function FaqList({ items, idPrefix }: { items: Faq[]; idPrefix: string }) {
 export default function FragorSvar() {
   return (
     <>
-      <PageHero eyebrow="Kontakt/support" title="Vanliga frågor och svar" />
+      <PageHero eyebrow="Kontakt/support" title="Vanliga frågor och svar" align="left" />
 
       <section className="section">
         <div className="container faq__inner">

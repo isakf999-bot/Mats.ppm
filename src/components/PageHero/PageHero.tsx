@@ -6,11 +6,15 @@ interface PageHeroProps {
   text?: string
   /** Bakgrundsbild (valfri). Utan bild blir heron enfärgad svart. */
   image?: string
+  /** Textjustering. Utan bild centreras texten som standard; 'left' tvingar vänsterställt. */
+  align?: 'left' | 'center'
 }
 
-export default function PageHero({ eyebrow, title, text, image }: PageHeroProps) {
+export default function PageHero({ eyebrow, title, text, image, align }: PageHeroProps) {
+  // Centrerad om ingen bild – men 'left' åsidosätter det.
+  const centered = !image && align !== 'left'
   return (
-    <section className={`page-hero ${image ? '' : 'page-hero--centered'}`}>
+    <section className={`page-hero ${centered ? 'page-hero--centered' : ''}`}>
       {image && (
         <>
           <div

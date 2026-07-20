@@ -9,7 +9,7 @@ export default function Kundtjanst() {
       <PageHero eyebrow="Kontakt/support" title="Kundtjänst" />
 
       <section className="section">
-        <div className="container page-prose">
+        <div className="container page-prose page-prose--center">
           <p>
             Om du har en fundering eller en fråga kan du se om svaret finns i
             Frågor&amp;Svar under fliken Kontakt/Support. Finner du inte svaret

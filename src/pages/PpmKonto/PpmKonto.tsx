@@ -53,6 +53,7 @@ export default function PpmKonto() {
         eyebrow="Resultat"
         title="Historik"
         text="Följ värdeutvecklingen på Mats egna konton, år för år."
+        align="left"
       />
 
       <section className="section">
