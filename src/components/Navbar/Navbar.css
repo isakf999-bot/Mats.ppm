@@ -36,10 +36,14 @@
 
 .navbar__brand {
   display: inline-flex;
-  transition: opacity var(--dur) var(--ease);
+  transform-origin: center;
+  transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
 }
 .navbar__brand:hover {
-  opacity: 0.75;
+  transform: rotate(-6deg);
+}
+.navbar__brand:active {
+  transform: rotate(-6deg) scale(0.96);
 }
 
 /* ---- Desktop-nav ---- */
@@ -120,6 +124,7 @@
   font-size: var(--fs-small);
   color: var(--color-body);
   border-radius: var(--radius-sm);
+  white-space: nowrap;
   transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 

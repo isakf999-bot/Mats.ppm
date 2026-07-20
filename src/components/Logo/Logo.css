@@ -9,6 +9,11 @@
   display: block;
 }
 
+/* Enbart monogram (navbar): renderas större eftersom textdelen är borttagen */
+.logo--mark .logo__img {
+  height: 60px;
+}
+
 /* På mörk bakgrund (footer): färga hela loggan i brand-guld via filterkedja
    (brightness(0) → svart, sedan colorize mot ~#f2a81d) så den syns mot navy
    och behåller sin gyllene karaktär. */
