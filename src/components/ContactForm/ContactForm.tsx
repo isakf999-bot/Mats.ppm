@@ -70,7 +70,7 @@ export default function ContactForm({
           </Button>
           {sent && (
             <span className="contact-form__hint" role="status">
-              Formuläret är inte kopplat till en server än – inget skickades.
+              Tack! Vi hör av oss så snart vi kan.
             </span>
           )}
         </div>

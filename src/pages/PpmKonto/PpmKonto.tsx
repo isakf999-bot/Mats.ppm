@@ -112,13 +112,7 @@ export default function PpmKonto() {
                 />
               </figure>
             ) : (
-              <div className="page-placeholder">
-                <span className="page-placeholder__icon" aria-hidden="true">!</span>
-                <p>
-                  <strong>Bild saknas för {year}.</strong> Skicka bilden så lägger
-                  jag in den.
-                </p>
-              </div>
+              <p className="ppm__empty">Ingen bild för {year} ännu.</p>
             )
           ) : (
             <div className="ppm__grid">
@@ -135,12 +129,7 @@ export default function PpmKonto() {
                       <figcaption className="ppm__caption">{item.label}</figcaption>
                     </>
                   ) : (
-                    <div className="page-placeholder">
-                      <span className="page-placeholder__icon" aria-hidden="true">!</span>
-                      <p>
-                        <strong>Bild saknas: {item.label}.</strong>
-                      </p>
-                    </div>
+                    <p className="ppm__empty">Ingen bild för {item.label} ännu.</p>
                   )}
                 </figure>
               ))}

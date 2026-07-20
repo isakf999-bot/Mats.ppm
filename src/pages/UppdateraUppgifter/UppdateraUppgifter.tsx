@@ -33,16 +33,6 @@ export default function UppdateraUppgifter() {
               Skicka
             </Button>
           </form>
-
-          <div className="page-placeholder">
-            <span className="page-placeholder__icon" aria-hidden="true">
-              !
-            </span>
-            <p>
-              <strong>Formuläret är inte kopplat än.</strong> Det behöver kopplas
-              till backend/e-posttjänst för att skicka uppdateringslänken.
-            </p>
-          </div>
         </div>
       </section>
     </>

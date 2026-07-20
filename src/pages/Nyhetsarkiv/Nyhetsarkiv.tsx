@@ -21,15 +21,6 @@ export default function Nyhetsarkiv() {
               Läs nyhetsbreven
             </Button>
           </div>
-
-          <div className="page-placeholder">
-            <span className="page-placeholder__icon" aria-hidden="true">!</span>
-            <p>
-              <strong>Länken till nyhetsbrevsarkivet saknas.</strong> På den
-              gamla sajten går "KLICKA HÄR" till en extern sida — skicka den
-              adressen så kopplar jag knappen.
-            </p>
-          </div>
         </div>
       </section>
     </>

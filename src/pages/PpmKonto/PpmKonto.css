@@ -96,6 +96,11 @@
   color: var(--color-navy);
 }
 
+.ppm__empty {
+  color: var(--color-muted);
+  font-size: var(--fs-small);
+}
+
 .ppm__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
