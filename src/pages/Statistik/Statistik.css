@@ -1,0 +1,33 @@
+.stat__heading {
+  margin-bottom: var(--space-5);
+}
+
+.stat__figures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.stat__figure {
+  margin: 0;
+}
+
+.stat__img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+
+.stat__contact {
+  background: var(--color-bg-light);
+}
+
+@media (max-width: 860px) {
+  .stat__figures {
+    grid-template-columns: 1fr;
+  }
+}

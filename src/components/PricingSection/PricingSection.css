@@ -64,15 +64,17 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
-  align-items: center; /* centrerat så det större kortet sticker ut lika mycket upp som ner */
+  align-items: stretch; /* alla kort lika höga → raderna linjerar */
 }
 
 .price-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  padding: var(--space-5);
+  padding: var(--space-6) var(--space-5);
   box-shadow: var(--shadow-card);
   transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
@@ -81,17 +83,13 @@
   box-shadow: var(--shadow-card-hover);
 }
 
+/* Utvalt kort sticker ut via färg + skugga + gyllene ram – inte uppskalning,
+   så all text förblir exakt samma storlek och rader linjerar mellan korten. */
 .price-card--featured {
   background: var(--color-navy);
   border-color: var(--color-navy);
   color: rgba(255, 255, 255, 0.85);
-  box-shadow: var(--shadow-lg);
-  /* Extra höjd upp och ner (utöver de andra korten), centrerat via grid align-items */
-  padding-block: var(--space-7);
-  transform: scale(1.04);
-}
-.price-card--featured:hover {
-  transform: scale(1.04) translateY(-4px);
+  box-shadow: var(--shadow-lg), 0 0 0 1.5px var(--color-gold);
 }
 
 .price-card__badge {
@@ -109,7 +107,8 @@
 
 .price-card__header {
   margin-bottom: var(--space-3);
-  padding-right: 90px;
+  padding-right: 96px;
+  min-height: 92px; /* fallback: rymmer det högsta kortets namn + undertitel */
 }
 
 .price-card__name {
@@ -133,7 +132,7 @@
   font-size: var(--fs-caption);
   color: var(--color-body);
   margin-bottom: var(--space-4);
-  min-height: 40px;
+  min-height: 72px; /* fallback: beskrivningen linjerar → priset hamnar på samma höjd */
 }
 .price-card--featured .price-card__desc {
   color: rgba(255, 255, 255, 0.7);
@@ -151,6 +150,30 @@
   font-weight: 800;
   color: var(--color-ink);
   letter-spacing: -0.02em;
+  display: inline-block;
+}
+
+/* Animeras in vid växling mellan månad/år (spannet re-monteras via key) */
+@media (prefers-reduced-motion: no-preference) {
+  .price-card__amount {
+    animation: price-swap 0.42s var(--ease);
+  }
+}
+
+@keyframes price-swap {
+  0% {
+    opacity: 0;
+    transform: translateY(0.5em) scale(0.96);
+    filter: blur(3px);
+  }
+  60% {
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
 }
 .price-card--featured .price-card__amount {
   color: var(--color-white);
@@ -200,16 +223,40 @@
   color: var(--color-gold);
 }
 
+/* Exakt radlinjering mellan korten via subgrid (moderna webbläsare).
+   Varje kort delar samma 6 radspår → rubrik, pris, knapp och listor
+   hamnar på exakt samma höjd oavsett textlängd. Fasta höjder behövs ej. */
+@supports (grid-template-rows: subgrid) {
+  .pricing__grid {
+    grid-template-rows: repeat(6, auto);
+    row-gap: 0;
+  }
+  .price-card {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 6;
+  }
+  .price-card__header,
+  .price-card__desc {
+    min-height: 0;
+  }
+}
+
 @media (max-width: 960px) {
   .pricing__grid {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
     max-width: 480px;
     margin-inline: auto;
+    row-gap: var(--space-4);
   }
-  .price-card--featured {
-    transform: none;
+  /* Staplat: tillbaka till flex, ingen subgrid och inga fasta höjder */
+  .price-card {
+    display: flex;
+    grid-row: auto;
   }
-  .price-card--featured:hover {
-    transform: translateY(-4px);
+  .price-card__header,
+  .price-card__desc {
+    min-height: 0;
   }
 }

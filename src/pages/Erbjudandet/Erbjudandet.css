@@ -1,0 +1,440 @@
+/* ============================================================
+   Sidan "Vad Mats Svensson erbjuder"
+   ============================================================ */
+
+/* ---------- Hero ---------- */
+.erb-hero {
+  position: relative;
+  background: var(--color-black);
+  color: var(--color-white);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Bakgrundsbild (Mats) – ligger till höger, svart smälter ihop med sektionen */
+.erb-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  transform: translateX(10%);
+  z-index: -3;
+}
+
+/* Scrim från vänster som garanterar textkontrast */
+.erb-hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 28%,
+    rgba(0, 0, 0, 0.85) 44%,
+    rgba(0, 0, 0, 0.2) 64%,
+    transparent 80%
+  );
+  z-index: -2;
+}
+
+.erb-hero__glow {
+  position: absolute;
+  top: -30%;
+  left: 8%;
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(242, 168, 29, 0.16) 0%, transparent 62%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.erb-hero__inner {
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-8);
+  min-height: 460px;
+}
+
+.erb-hero__eyebrow {
+  color: var(--color-gold);
+  margin-bottom: var(--space-3);
+}
+
+.erb-hero__title {
+  color: var(--color-white);
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  line-height: 1.08;
+  margin-bottom: var(--space-4);
+}
+
+.erb-hero__text {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: var(--fs-lead);
+  max-width: 520px;
+}
+
+.erb-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+/* Sekundärknapp mot mörk bakgrund */
+.erb-hero__actions .btn--secondary {
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+.erb-hero__actions .btn--secondary:hover {
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+
+/* ---------- Intro ---------- */
+.erb-intro__inner {
+  max-width: var(--container-narrow);
+}
+
+.erb-intro__lead {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-block: var(--space-4) var(--space-3);
+}
+
+.erb-intro__text {
+  color: var(--color-body);
+  margin-bottom: var(--space-3);
+  max-width: 720px;
+}
+
+/* Framhävd rad – bär sidans kärnbudskap */
+.erb-intro__emphasis {
+  position: relative;
+  max-width: 720px;
+  margin-top: var(--space-5);
+  padding-left: var(--space-4);
+  border-left: 3px solid var(--color-gold);
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-ink);
+}
+
+/* Nyhetsbrev – eget erbjudande, egen liten yta */
+.erb-newsletter {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  max-width: 720px;
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  background: var(--color-bg-cream);
+  border: 1px solid rgba(242, 168, 29, 0.28);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.erb-newsletter__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  background: rgba(242, 168, 29, 0.2);
+  color: var(--color-gold-hover);
+}
+.erb-newsletter__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.erb-newsletter__text {
+  color: var(--color-body);
+  font-size: var(--fs-small);
+}
+
+.erb-newsletter__note {
+  margin-top: var(--space-2);
+  font-size: var(--fs-caption);
+  color: var(--color-muted);
+}
+
+/* ---------- PPM ---------- */
+.erb-ppm {
+  background: var(--color-bg-light);
+}
+
+.erb-ppm__inner {
+  max-width: var(--container-narrow);
+}
+
+.erb-ppm__tag {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(242, 168, 29, 0.18);
+  color: var(--color-gold-hover);
+  font-family: var(--font-display);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-3);
+}
+
+.erb-ppm .section-heading {
+  margin-bottom: var(--space-4);
+}
+
+.erb-ppm__text {
+  color: var(--color-body);
+  margin-bottom: var(--space-3);
+  max-width: 720px;
+}
+
+/* Process: sms/mejl → logga in och byt själv */
+.erb-flow {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-3);
+  max-width: 720px;
+  margin-block: var(--space-5);
+}
+
+.erb-flow__step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.erb-flow__step:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
+}
+.erb-flow__step p {
+  font-size: var(--fs-small);
+  color: var(--color-body);
+}
+.erb-flow__step strong {
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+.erb-flow__icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background: rgba(242, 168, 29, 0.16);
+  color: var(--color-gold-hover);
+}
+.erb-flow__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.erb-flow__arrow {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--color-muted);
+}
+.erb-flow__arrow svg {
+  width: 20px;
+  height: 14px;
+}
+
+/* ---------- ISK ---------- */
+.erb-isk__inner {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: start;
+  gap: var(--space-7);
+}
+
+/* Text till vänster, bild till höger */
+.erb-isk__content {
+  order: 1;
+}
+
+.erb-isk__media {
+  order: 2;
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-5));
+}
+
+.erb-isk__img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.erb-isk .section-heading {
+  margin-bottom: var(--space-4);
+}
+
+/* ---------- Nöjda kunder ---------- */
+.erb-trust__inner {
+  max-width: var(--container-narrow);
+}
+
+.erb-trust .section-heading {
+  margin-bottom: var(--space-4);
+}
+
+.erb-trust__text {
+  color: var(--color-body);
+  margin-bottom: var(--space-3);
+  max-width: 720px;
+}
+
+/* Klickbar YouTube-film */
+.erb-video {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  max-width: 720px;
+  margin-top: var(--space-5);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #000;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.erb-video img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s var(--ease);
+}
+.erb-video:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.erb-video:hover img {
+  transform: scale(1.04);
+}
+
+.erb-video__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 66px;
+  height: 66px;
+  border-radius: var(--radius-pill);
+  background: var(--color-gold);
+  color: #2a1c00;
+  box-shadow: var(--shadow-gold);
+  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.erb-video__play svg {
+  width: 30px;
+  height: 30px;
+  margin-left: 4px;
+}
+.erb-video:hover .erb-video__play {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: var(--color-gold-hover);
+}
+
+/* Bilden har redan en inbränd play-knapp – dölj vår egen så det inte blir två */
+.erb-video--baked-play .erb-video__play {
+  display: none;
+}
+
+/* ---------- CTA ---------- */
+.erb-cta {
+  background: var(--color-bg-lavender);
+}
+
+.erb-cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.erb-cta__title {
+  font-size: var(--fs-h3);
+  color: var(--color-ink);
+}
+
+.erb-cta__text {
+  color: var(--color-body);
+  margin-top: var(--space-2);
+}
+
+.erb-cta__inner .btn {
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Responsivt
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .erb-hero__inner {
+    padding-block: var(--space-7);
+    min-height: 380px;
+  }
+  .erb-hero__bg {
+    background-position: 74% center;
+    transform: none;
+    opacity: 0.6;
+  }
+  .erb-hero__scrim {
+    background: linear-gradient(
+      90deg,
+      #000 0%,
+      rgba(0, 0, 0, 0.78) 58%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+  }
+  .erb-isk__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  .erb-isk__media {
+    position: static;
+  }
+  .erb-flow {
+    flex-direction: column;
+  }
+  .erb-flow__arrow {
+    transform: rotate(90deg);
+    padding-block: var(--space-1);
+  }
+  .erb-trust__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+}
+
+@media (max-width: 700px) {
+  .erb-cta__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+  .erb-trust__stats {
+    gap: var(--space-4);
+  }
+}

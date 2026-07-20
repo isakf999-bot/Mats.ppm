@@ -70,6 +70,16 @@
   background: rgba(22, 41, 77, 0.05);
 }
 
+/* Aktuell sida */
+.navbar__link.is-current {
+  color: var(--color-navy);
+  background: rgba(242, 168, 29, 0.14);
+}
+.navbar__dropdown-link.is-current {
+  color: var(--color-gold-hover);
+  background: rgba(242, 168, 29, 0.12);
+}
+
 .navbar__chevron {
   width: 10px;
   height: 7px;

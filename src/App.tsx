@@ -1,35 +1,45 @@
-import Navbar from './components/Navbar/Navbar'
-import Hero from './components/Hero/Hero'
-import StructureSection from './components/StructureSection/StructureSection'
-import AccessSection from './components/AccessSection/AccessSection'
-import FocusSection from './components/FocusSection/FocusSection'
-import PricingSection from './components/PricingSection/PricingSection'
-import PracticalSection from './components/PracticalSection/PracticalSection'
-import CommunitySection from './components/CommunitySection/CommunitySection'
-import VideoSection from './components/VideoSection/VideoSection'
-import CalculatorSection from './components/CalculatorSection/CalculatorSection'
-import CtaBanner from './components/CtaBanner/CtaBanner'
-import InfoSection from './components/InfoSection/InfoSection'
-import Footer from './components/Footer/Footer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout/Layout'
+import Home from './pages/Home/Home'
+import Erbjudandet from './pages/Erbjudandet/Erbjudandet'
+import BliKund from './pages/BliKund/BliKund'
+import ByterFonder from './pages/ByterFonder/ByterFonder'
+import SenasteFondbytet from './pages/SenasteFondbytet/SenasteFondbytet'
+import Nyhetsarkiv from './pages/Nyhetsarkiv/Nyhetsarkiv'
+import PpmKonto from './pages/PpmKonto/PpmKonto'
+import Statistik from './pages/Statistik/Statistik'
+import OmMats from './pages/OmMats/OmMats'
+import Kundtjanst from './pages/Kundtjanst/Kundtjanst'
+import FragorSvar from './pages/FragorSvar/FragorSvar'
+import UppdateraUppgifter from './pages/UppdateraUppgifter/UppdateraUppgifter'
 
 export default function App() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <StructureSection />
-        <AccessSection />
-        <FocusSection />
-        <PricingSection />
-        <PracticalSection />
-        <CommunitySection />
-        <VideoSection />
-        <CalculatorSection />
-        <CtaBanner />
-        <InfoSection />
-      </main>
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+
+          {/* Tjänst */}
+          <Route path="/erbjudandet" element={<Erbjudandet />} />
+          <Route path="/bli-kund" element={<BliKund />} />
+          <Route path="/sa-har-byter-du-fond" element={<ByterFonder />} />
+          <Route path="/senaste-fondbytet" element={<SenasteFondbytet />} />
+          <Route path="/nyhetsarkiv" element={<Nyhetsarkiv />} />
+
+          {/* Resultat */}
+          <Route path="/mats-ppm-konto" element={<PpmKonto />} />
+          <Route path="/statistik" element={<Statistik />} />
+
+          {/* Om */}
+          <Route path="/om-mats-svensson" element={<OmMats />} />
+
+          {/* Kontakt/support */}
+          <Route path="/kundtjanst" element={<Kundtjanst />} />
+          <Route path="/fragor-svar" element={<FragorSvar />} />
+          <Route path="/uppdatera-kunduppgifter" element={<UppdateraUppgifter />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }

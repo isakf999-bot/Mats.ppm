@@ -1,0 +1,96 @@
+.faq__inner {
+  max-width: var(--container-narrow);
+}
+
+.faq__heading {
+  margin-bottom: var(--space-5);
+}
+.faq__heading--spaced {
+  margin-top: var(--space-8);
+}
+
+.faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.faq__item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.faq__item:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-card-hover);
+}
+.faq__item.is-open {
+  border-color: rgba(242, 168, 29, 0.5);
+}
+
+.faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: 100%;
+  padding: var(--space-4) var(--space-5);
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--color-ink);
+  transition: color var(--dur) var(--ease);
+}
+.faq__question:hover {
+  color: var(--color-gold-hover);
+}
+
+.faq__icon {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  color: var(--color-gold-hover);
+  transition: transform var(--dur) var(--ease);
+}
+.faq__item.is-open .faq__icon {
+  transform: rotate(45deg);
+}
+
+/* Kollaps med ett enda barn (krävs för 0fr/1fr-tekniken) */
+.faq__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s var(--ease);
+}
+.faq__item.is-open .faq__answer {
+  grid-template-rows: 1fr;
+}
+.faq__answer-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+.faq__answer-inner p {
+  padding-inline: var(--space-5);
+  font-size: var(--fs-small);
+  color: var(--color-body);
+  line-height: 1.7;
+}
+.faq__answer-inner p:first-child {
+  padding-top: var(--space-1);
+}
+.faq__answer-inner p:not(:last-child) {
+  padding-bottom: var(--space-3);
+}
+.faq__answer-inner p:last-child {
+  padding-bottom: var(--space-5);
+}
+
+/* Markering för frågetext som saknas */
+.faq__missing {
+  color: var(--color-gold-hover);
+  font-style: italic;
+}

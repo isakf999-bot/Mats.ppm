@@ -1,0 +1,28 @@
+.om-mats__inner {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: start;
+  gap: var(--space-7);
+}
+
+.om-mats__media {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-5));
+}
+
+.om-mats__img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 900px) {
+  .om-mats__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  .om-mats__media {
+    position: static;
+  }
+}

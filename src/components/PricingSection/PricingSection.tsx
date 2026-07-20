@@ -20,7 +20,7 @@ const PLANS: Plan[] = [
     subtitle: 'PPM',
     desc: 'Ta del av Mats fondbytesinformation för de PPM fonder han väljer i sitt privata sparande',
     monthly: 169,
-    yearly: 1690,
+    yearly: 1597,
     features: [
       'Utskick av Email samma dag Mats byter sina fonder.',
       'Utskick av SMS samma dag Mats byter sina fonder.',
@@ -32,7 +32,7 @@ const PLANS: Plan[] = [
     subtitle: 'PPM & ISK',
     desc: 'Ta del av Mats fondbytesinformation för de PPM & ISK fonder han väljer i sitt privata sparande',
     monthly: 217,
-    yearly: 2170,
+    yearly: 1997,
     features: [
       'Ta del av mina fondbytesbeslut för PPM och ISK-fonder över tid',
       'Utskick av E-mail samma dag Mats byter sina fonder',
@@ -45,7 +45,7 @@ const PLANS: Plan[] = [
     subtitle: '(PPM & ISK plus Skool Premium)',
     desc: 'Ta del av Mats fondbytesinformation för de PPM & ISK fonder han väljer i sitt privata sparande',
     monthly: 367,
-    yearly: 3670,
+    yearly: 2997,
     featured: true,
     badge: 'Populärast',
     features: [
@@ -56,6 +56,8 @@ const PLANS: Plan[] = [
     ],
   },
 ]
+
+const formatKr = (n: number) => new Intl.NumberFormat('sv-SE').format(n)
 
 export default function PricingSection() {
   const [yearly, setYearly] = useState(false)
@@ -101,8 +103,8 @@ export default function PricingSection() {
               <p className="price-card__desc">{plan.desc}</p>
 
               <div className="price-card__price">
-                <span className="price-card__amount">
-                  {yearly ? plan.yearly : plan.monthly} kr
+                <span key={yearly ? 'y' : 'm'} className="price-card__amount">
+                  {formatKr(yearly ? plan.yearly : plan.monthly)} kr
                 </span>
                 <span className="price-card__period">/{yearly ? 'år' : 'mån'}</span>
               </div>

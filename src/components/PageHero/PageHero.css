@@ -1,0 +1,101 @@
+.page-hero {
+  position: relative;
+  background: var(--color-black);
+  color: var(--color-white);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  z-index: -3;
+}
+
+.page-hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 26%,
+    rgba(0, 0, 0, 0.85) 44%,
+    rgba(0, 0, 0, 0.35) 68%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+  z-index: -2;
+}
+
+.page-hero__glow {
+  position: absolute;
+  top: -40%;
+  left: 6%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(242, 168, 29, 0.15) 0%, transparent 62%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.page-hero__inner {
+  position: relative;
+  padding-block: var(--space-8) var(--space-7);
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page-hero__eyebrow {
+  color: var(--color-gold);
+  margin-bottom: var(--space-3);
+}
+
+.page-hero__title {
+  color: var(--color-white);
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  line-height: 1.08;
+  max-width: 780px;
+}
+
+.page-hero__text {
+  margin-top: var(--space-4);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: var(--fs-lead);
+  max-width: 620px;
+}
+
+/* Utan bild: centrerat innehåll */
+.page-hero--centered .page-hero__inner {
+  align-items: center;
+  text-align: center;
+}
+.page-hero--centered .page-hero__title,
+.page-hero--centered .page-hero__text {
+  max-width: 720px;
+  margin-inline: auto;
+}
+.page-hero--centered .page-hero__glow {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 900px) {
+  .page-hero__inner {
+    padding-block: var(--space-7) var(--space-6);
+    min-height: 220px;
+  }
+  .page-hero__scrim {
+    background: linear-gradient(
+      90deg,
+      #000 0%,
+      rgba(0, 0, 0, 0.82) 60%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+  }
+}

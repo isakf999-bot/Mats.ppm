@@ -1,0 +1,121 @@
+/* ---- Switch PPM / ISK ---- */
+.ppm__switch {
+  display: inline-flex;
+  gap: 4px;
+  padding: 5px;
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  box-shadow: inset 0 1px 3px rgba(16, 31, 61, 0.06);
+  margin-bottom: var(--space-6);
+}
+
+.ppm__switch-btn {
+  padding: 11px 26px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-body);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+.ppm__switch-btn:hover {
+  color: var(--color-navy);
+}
+.ppm__switch-btn.is-active {
+  background: var(--color-navy);
+  color: var(--color-white);
+  box-shadow: var(--shadow-card);
+}
+
+.ppm__heading {
+  margin-bottom: var(--space-5);
+}
+
+/* ---- Årsväljare ---- */
+.ppm__years {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.ppm__year {
+  min-width: 62px;
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-family: var(--font-display);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--color-body);
+  box-shadow: var(--shadow-sm);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.ppm__year:hover {
+  background: rgba(242, 168, 29, 0.14);
+  color: var(--color-gold-hover);
+  border-color: rgba(242, 168, 29, 0.4);
+}
+.ppm__year.is-active {
+  background: rgba(242, 168, 29, 0.16);
+  color: var(--color-gold-hover);
+  border-color: var(--color-gold);
+}
+.ppm__year:active {
+  transform: scale(0.96);
+}
+
+.ppm__subheading {
+  font-size: var(--fs-h4);
+  margin-bottom: var(--space-4);
+}
+
+/* ---- Bild(er) ---- */
+.ppm__figure {
+  margin: 0;
+}
+
+.ppm__img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+
+.ppm__caption {
+  margin-top: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.ppm__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+}
+
+/* PPM-bilderna är porträtt/smala – begränsa bredden så de inte blir enorma */
+.ppm__figure:only-child .ppm__img {
+  max-width: 560px;
+}
+
+@media (max-width: 760px) {
+  .ppm__grid {
+    grid-template-columns: 1fr;
+  }
+  .ppm__switch {
+    width: 100%;
+  }
+  .ppm__switch-btn {
+    flex: 1;
+    padding-inline: 12px;
+  }
+}
