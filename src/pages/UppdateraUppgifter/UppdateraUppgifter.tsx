@@ -8,7 +8,7 @@ export default function UppdateraUppgifter() {
       <PageHero eyebrow="Kontakt/support" title="Uppdatera dina kunduppgifter" />
 
       <section className="section">
-        <div className="container page-prose">
+        <div className="container page-prose page-prose--center">
           <h2>Uppdatera dina kunduppgifter</h2>
           <p>
             Ibland händer det att man byter adress eller mobilnummer. Som kund

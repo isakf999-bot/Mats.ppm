@@ -6,6 +6,25 @@
   max-width: var(--container-narrow);
 }
 
+/* Centrerad variant – rubrik, text, formulär och knapp centrerade */
+.page-prose--center {
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: center;
+}
+.page-prose--center p {
+  margin-inline: auto;
+}
+.page-prose--center .page-form,
+.page-prose--center .signup,
+.page-prose--center .page-cta-row {
+  margin-inline: auto;
+  justify-content: center;
+}
+.page-prose--center .signup {
+  text-align: left; /* korten inuti behåller vänsterställd läsning */
+}
+
 .page-prose p {
   color: var(--color-body);
   margin-bottom: var(--space-3);

@@ -8,7 +8,7 @@ export default function Nyhetsarkiv() {
       <PageHero eyebrow="Tjänst" title="Nyhetsarkiv" />
 
       <section className="section">
-        <div className="container page-prose">
+        <div className="container page-prose page-prose--center">
           <h2>Månadens analys av marknaden</h2>
           <p>
             Varje månad skickar jag ut mitt nyhetsbrev med månadens analys av

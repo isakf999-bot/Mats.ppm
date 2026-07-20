@@ -8,7 +8,7 @@ export default function SenasteFondbytet() {
       <PageHero eyebrow="Tjänst" title="Senaste fondbytet" />
 
       <section className="section">
-        <div className="container page-prose">
+        <div className="container page-prose page-prose--center">
           <h2>Hämta mitt senaste fondbyte</h2>
           <p>
             Som kund kan du alltid hämta mitt senaste fondbyte här. Ange din
