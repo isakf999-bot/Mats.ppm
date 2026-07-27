@@ -103,7 +103,7 @@ export default function PpmKonto() {
 
           {account === 'ppm' ? (
             ppmImage(year) ? (
-              <figure className="ppm__figure">
+              <figure className="ppm__figure media-frame">
                 <img
                   className="ppm__img"
                   src={ppmImage(year)}
@@ -117,7 +117,7 @@ export default function PpmKonto() {
           ) : (
             <div className="ppm__grid">
               {ISK_IMAGES[year]?.map((item) => (
-                <figure key={item.label} className="ppm__figure">
+                <figure key={item.label} className={`ppm__figure ${item.src ? 'media-frame' : ''}`}>
                   {item.src ? (
                     <>
                       <img
@@ -126,7 +126,7 @@ export default function PpmKonto() {
                         alt={`Mats ISK-konto ${item.label} år ${year}`}
                         loading="lazy"
                       />
-                      <figcaption className="ppm__caption">{item.label}</figcaption>
+                      <figcaption className="media-frame__caption">{item.label}</figcaption>
                     </>
                   ) : (
                     <p className="ppm__empty">Ingen bild för {item.label} ännu.</p>

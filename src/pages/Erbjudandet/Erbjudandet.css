@@ -19,23 +19,39 @@
   background-repeat: no-repeat;
   background-position: right center;
   background-size: cover;
-  transform: translateX(10%);
+  transform: translateX(8%);
+  filter: contrast(1.07) saturate(1.06) brightness(1.02);
   z-index: -3;
 }
 
-/* Scrim från vänster som garanterar textkontrast */
+/* Scrim från vänster + vinjett som ramar in Mats i svart */
 .erb-hero__scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    #000 0%,
-    #000 28%,
-    rgba(0, 0, 0, 0.85) 44%,
-    rgba(0, 0, 0, 0.2) 64%,
-    transparent 80%
-  );
+  background:
+    radial-gradient(120% 95% at 80% 42%, transparent 46%, rgba(10, 10, 11, 0.5) 84%, var(--color-black) 100%),
+    linear-gradient(0deg, var(--color-black) 0%, transparent 20%),
+    linear-gradient(
+      90deg,
+      #000 0%,
+      #000 28%,
+      rgba(0, 0, 0, 0.85) 44%,
+      rgba(0, 0, 0, 0.2) 64%,
+      transparent 80%
+    );
   z-index: -2;
+}
+
+/* Avslutande guldlinje mot nästa sektion */
+.erb-hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(242, 168, 29, 0.7) 30%, rgba(242, 168, 29, 0.7) 70%, transparent);
+  z-index: 1;
 }
 
 .erb-hero__glow {
@@ -280,8 +296,6 @@
 .erb-isk__img {
   width: 100%;
   height: auto;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
 }
 
 .erb-isk .section-heading {

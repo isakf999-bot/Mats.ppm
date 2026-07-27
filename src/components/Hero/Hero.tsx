@@ -11,6 +11,7 @@ export default function Hero() {
         aria-hidden="true"
       />
       <div className="hero__scrim" aria-hidden="true" />
+      <div className="hero__grid" aria-hidden="true" />
       <div className="hero__glow" aria-hidden="true" />
 
       <div className="hero__inner container">

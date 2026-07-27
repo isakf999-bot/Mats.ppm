@@ -103,10 +103,20 @@ export default function PricingSection() {
               <p className="price-card__desc">{plan.desc}</p>
 
               <div className="price-card__price">
-                <span key={yearly ? 'y' : 'm'} className="price-card__amount">
-                  {formatKr(yearly ? plan.yearly : plan.monthly)} kr
-                </span>
-                <span className="price-card__period">/{yearly ? 'år' : 'mån'}</span>
+                <div className="price-card__price-main">
+                  <span key={yearly ? 'y' : 'm'} className="price-card__amount">
+                    {formatKr(yearly ? plan.yearly : plan.monthly)} kr
+                  </span>
+                  <span className="price-card__period">/{yearly ? 'år' : 'mån'}</span>
+                </div>
+                {yearly && (
+                  <span className="price-card__equiv">
+                    ≈ {formatKr(Math.round(plan.yearly / 12))} kr/mån
+                    <span className="price-card__save">
+                      Spara {formatKr(plan.monthly * 12 - plan.yearly)} kr/år
+                    </span>
+                  </span>
+                )}
               </div>
 
               <Button

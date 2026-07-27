@@ -1,8 +1,9 @@
 import Button from '../../components/ui/Button'
 import erbHero from '../../assets/erbjudandet-hero.jpg'
 import matsHund from '../../assets/mats-hund.webp'
-import videoThumb from '../../assets/ppm-video-poster.png'
+import videoThumb from '../../assets/om-mats-1.jpg'
 import { useReveal } from '../../hooks/useReveal'
+import '../shared/pageShared.css'
 import './Erbjudandet.css'
 
 export default function Erbjudandet() {
@@ -163,7 +164,7 @@ export default function Erbjudandet() {
       {/* ---------- ISK ---------- */}
       <section className="section erb-isk">
         <div ref={iskRef} className="container reveal erb-isk__inner">
-          <div className="erb-isk__media">
+          <figure className="erb-isk__media media-frame">
             <img
               className="erb-isk__img"
               src={matsHund}
@@ -172,7 +173,7 @@ export default function Erbjudandet() {
               height={643}
               loading="lazy"
             />
-          </div>
+          </figure>
 
           <div className="erb-isk__content">
             <span className="erb-ppm__tag">Investeringssparkonto (ISK)</span>
@@ -230,10 +231,8 @@ export default function Erbjudandet() {
             ändå hur du hittar din egen utveckling i PPM.
           </p>
 
-          {/* Nuvarande bild har play-knappen inbränd (skärmdump), därför är vår
-              egen guldknapp dold via modifieraren. Tas bort när ren bild finns. */}
           <a
-            className="erb-video erb-video--baked-play"
+            className="erb-video"
             href="https://www.youtube.com/watch?v=MvRS_y-GwYI"
             target="_blank"
             rel="noopener noreferrer"
@@ -241,10 +240,10 @@ export default function Erbjudandet() {
           >
             <img
               src={videoThumb}
-              alt="Mats Svensson loggar in på sitt PPM-konto"
+              alt="Mats Svensson – se filmen där han loggar in på sitt PPM-konto"
               loading="lazy"
-              width={1090}
-              height={608}
+              width={1488}
+              height={886}
             />
             <span className="erb-video__play" aria-hidden="true">
               <svg viewBox="0 0 24 24">

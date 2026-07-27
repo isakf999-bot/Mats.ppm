@@ -82,18 +82,6 @@
 .ppm__img {
   width: 100%;
   height: auto;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-md);
-}
-
-.ppm__caption {
-  margin-top: var(--space-2);
-  font-family: var(--font-display);
-  font-size: var(--fs-small);
-  font-weight: 600;
-  color: var(--color-navy);
 }
 
 .ppm__empty {
@@ -107,9 +95,9 @@
   gap: var(--space-5);
 }
 
-/* PPM-bilderna är porträtt/smala – begränsa bredden så de inte blir enorma */
-.ppm__figure:only-child .ppm__img {
-  max-width: 560px;
+/* PPM-bilderna är porträtt/smala – begränsa ramens bredd så den inte blir enorm */
+.container > .ppm__figure {
+  max-width: 584px;
 }
 
 @media (max-width: 760px) {

@@ -56,7 +56,7 @@ export default function AccessSection() {
               besluten.
             </p>
           </div>
-          <div className="access-feature__media">
+          <figure className="access-feature__media">
             <img
               className="access-feature__img"
               src={section2}
@@ -64,7 +64,11 @@ export default function AccessSection() {
               width={269}
               height={341}
             />
-          </div>
+            <figcaption className="access-feature__caption">
+              <span className="access-feature__caption-dot" aria-hidden="true" />
+              Uppmärksammad i Aftonbladet
+            </figcaption>
+          </figure>
         </article>
       </div>
     </section>

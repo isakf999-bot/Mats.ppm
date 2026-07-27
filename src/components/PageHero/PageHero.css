@@ -13,21 +13,37 @@
   background-repeat: no-repeat;
   background-position: right center;
   background-size: cover;
+  filter: contrast(1.06) saturate(1.05) brightness(1.02);
   z-index: -3;
 }
 
 .page-hero__scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    #000 0%,
-    #000 26%,
-    rgba(0, 0, 0, 0.85) 44%,
-    rgba(0, 0, 0, 0.35) 68%,
-    rgba(0, 0, 0, 0.15) 100%
-  );
+  background:
+    radial-gradient(120% 95% at 82% 42%, transparent 48%, rgba(10, 10, 11, 0.5) 84%, var(--color-black) 100%),
+    linear-gradient(0deg, var(--color-black) 0%, transparent 20%),
+    linear-gradient(
+      90deg,
+      #000 0%,
+      #000 26%,
+      rgba(0, 0, 0, 0.85) 44%,
+      rgba(0, 0, 0, 0.35) 68%,
+      rgba(0, 0, 0, 0.15) 100%
+    );
   z-index: -2;
+}
+
+/* Avslutande guldlinje som ramar av heron mot nästa sektion */
+.page-hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(242, 168, 29, 0.7) 30%, rgba(242, 168, 29, 0.7) 70%, transparent);
+  z-index: 1;
 }
 
 .page-hero__glow {

@@ -140,9 +140,15 @@
 
 .price-card__price {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: var(--space-4);
+}
+.price-card__price-main {
+  display: flex;
   align-items: baseline;
   gap: 6px;
-  margin-bottom: var(--space-4);
 }
 .price-card__amount {
   font-family: var(--font-display);
@@ -184,6 +190,49 @@
 }
 .price-card--featured .price-card__period {
   color: rgba(255, 255, 255, 0.6);
+}
+
+/* Motsvarande månadskostnad + besparing vid årsvis betalning */
+.price-card__equiv {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--color-muted);
+}
+.price-card--featured .price-card__equiv {
+  color: rgba(255, 255, 255, 0.68);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .price-card__equiv {
+    animation: price-equiv-in 0.42s var(--ease);
+  }
+}
+@keyframes price-equiv-in {
+  0% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.price-card__save {
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(242, 168, 29, 0.14);
+  color: var(--color-gold-hover);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.price-card--featured .price-card__save {
+  background: rgba(242, 168, 29, 0.22);
+  color: var(--color-gold);
 }
 
 .price-card__included {

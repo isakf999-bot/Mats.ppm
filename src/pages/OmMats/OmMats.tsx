@@ -46,14 +46,17 @@ export default function OmMats() {
             </p>
           </div>
 
-          <div className="om-mats__media">
+          <figure className="om-mats__media media-frame">
             <img
               className="om-mats__img"
               src={omMatsBild}
               alt="Mats Svensson"
               loading="lazy"
             />
-          </div>
+            <figcaption className="media-frame__caption">
+              Mats hemma på gården utanför Helsingborg
+            </figcaption>
+          </figure>
         </div>
       </section>
     </>
