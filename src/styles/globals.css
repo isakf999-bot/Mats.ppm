@@ -42,6 +42,27 @@ a {
   text-decoration: none;
 }
 
+/* Skip-länk för tangentbord / tillgänglighet (teknisk SEO) */
+.skip-link {
+  position: absolute;
+  left: var(--space-3);
+  top: -100px;
+  z-index: 1000;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--color-navy);
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  transition: top 0.2s var(--ease);
+}
+.skip-link:focus {
+  top: var(--space-3);
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
 img,
 svg {
   display: block;

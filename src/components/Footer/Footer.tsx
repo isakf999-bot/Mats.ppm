@@ -4,9 +4,8 @@ import './Footer.css'
 type IconName = 'facebook' | 'youtube' | 'instagram'
 
 const SOCIALS: { label: string; href: string; icon: IconName }[] = [
-  { label: 'Facebook', href: '#', icon: 'facebook' },
-  { label: 'YouTube', href: '#', icon: 'youtube' },
-  { label: 'Instagram', href: '#', icon: 'instagram' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@mats-svensson', icon: 'youtube' },
+  { label: 'Instagram', href: 'https://www.instagram.com/ppm_gurun/', icon: 'instagram' },
 ]
 
 function SocialIcon({ name }: { name: IconName }) {
@@ -67,6 +66,8 @@ export default function Footer() {
                 href={s.href}
                 className="footer__social"
                 aria-label={s.label}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <SocialIcon name={s.icon} />
               </a>

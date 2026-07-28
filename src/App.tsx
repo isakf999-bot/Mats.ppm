@@ -12,6 +12,7 @@ import OmMats from './pages/OmMats/OmMats'
 import Kundtjanst from './pages/Kundtjanst/Kundtjanst'
 import FragorSvar from './pages/FragorSvar/FragorSvar'
 import UppdateraUppgifter from './pages/UppdateraUppgifter/UppdateraUppgifter'
+import NotFound from './pages/NotFound/NotFound'
 
 export default function App() {
   return (
@@ -38,6 +39,8 @@ export default function App() {
           <Route path="/kundtjanst" element={<Kundtjanst />} />
           <Route path="/fragor-svar" element={<FragorSvar />} />
           <Route path="/uppdatera-kunduppgifter" element={<UppdateraUppgifter />} />
+
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -33,6 +33,8 @@ export default function CommunitySection() {
             alt="For The Future by Mats – ett av Sveriges största ekonomi-communities på Skool"
             width={269}
             height={269}
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>

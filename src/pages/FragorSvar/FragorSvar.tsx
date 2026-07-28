@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import PageHero from '../../components/PageHero/PageHero'
 import '../shared/pageShared.css'
 import './FragorSvar.css'
@@ -116,6 +116,30 @@ function FaqList({ items, idPrefix }: { items: Faq[]; idPrefix: string }) {
 }
 
 export default function FragorSvar() {
+  useEffect(() => {
+    const all = [...PPM_FAQ, ...ISK_FAQ]
+    const data = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: all.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.a.join(' '),
+        },
+      })),
+    }
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.id = 'faq-jsonld'
+    script.text = JSON.stringify(data)
+    document.head.appendChild(script)
+    return () => {
+      document.getElementById('faq-jsonld')?.remove()
+    }
+  }, [])
+
   return (
     <>
       <PageHero eyebrow="Kontakt/support" title="Vanliga frågor och svar" align="left" />
