@@ -174,7 +174,7 @@ export default function Navbar() {
       />
 
       <div className={`navbar__mobile ${mobileOpen ? 'is-open' : ''}`}>
-        <ul>
+        <ul className="navbar__mobile-list">
           {NAV_ITEMS.map((item) => (
             <li key={item.label} className="navbar__mobile-item">
               {item.children ? (
@@ -215,6 +215,22 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+
+        <div className="navbar__mobile-cta">
+          <Link
+            to="/bli-kund"
+            className="navbar__mobile-btn"
+            onClick={() => setMobileOpen(false)}
+          >
+            Få tillgång till sparandet
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h11M11 5l5 5-5 5" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+          <a href="mailto:info@mats-svensson.se" className="navbar__mobile-contact">
+            info@mats-svensson.se
+          </a>
+        </div>
       </div>
     </>
   )

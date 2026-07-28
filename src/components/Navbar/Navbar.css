@@ -210,13 +210,19 @@
   right: 0;
   bottom: 0;
   z-index: 99;
-  background: var(--color-white);
-  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  /* Premium mörk drawer: marinblå djup + subtil guld-glow uppe till höger */
+  background:
+    radial-gradient(90% 45% at 100% 0%, rgba(242, 168, 29, 0.12), transparent 60%),
+    linear-gradient(180deg, var(--color-navy) 0%, var(--color-black) 130%);
+  color: var(--color-white);
+  padding: var(--space-4) var(--space-4) calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
   overflow-y: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   transform: translateX(100%);
-  transition: transform 0.35s var(--ease), visibility 0.35s;
+  transition: transform 0.4s var(--ease), visibility 0.4s;
   visibility: hidden;
 }
 .navbar__mobile.is-open {
@@ -232,30 +238,62 @@
   }
 }
 
+.navbar__mobile-list {
+  display: flex;
+  flex-direction: column;
+}
+
 .navbar__mobile-item {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navbar__mobile-link,
 .navbar__mobile-toggle {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: var(--space-3) var(--space-1);
+  padding: var(--space-4) var(--space-2);
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  color: var(--color-ink);
+  letter-spacing: -0.01em;
+  color: var(--color-white);
   text-align: left;
+  cursor: pointer;
+  transition: color var(--dur) var(--ease), padding-left var(--dur) var(--ease);
+}
+.navbar__mobile-link:hover,
+.navbar__mobile-toggle:hover,
+.navbar__mobile-link.is-current {
+  color: var(--color-gold);
+  padding-left: calc(var(--space-2) + 6px);
+}
+/* Guldstreck vid aktuell toppnivåsida */
+.navbar__mobile-link.is-current::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 22px;
+  border-radius: var(--radius-pill);
+  background: var(--color-gold);
 }
 .navbar__mobile-toggle svg {
   width: 14px;
   height: 9px;
-  transition: transform var(--dur) var(--ease);
+  color: rgba(255, 255, 255, 0.5);
+  transition: transform var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.navbar__mobile-toggle:hover svg {
+  color: var(--color-gold);
 }
 .navbar__mobile-toggle svg.rot {
   transform: rotate(180deg);
+  color: var(--color-gold);
 }
 
 .navbar__mobile-sub {
@@ -274,12 +312,70 @@
 }
 .navbar__mobile-sub a {
   display: block;
+  margin-left: var(--space-2);
   padding: 12px var(--space-3);
-  color: var(--color-body);
+  border-left: 2px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.66);
   font-size: var(--fs-small);
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
-.navbar__mobile-sub a:first-child {
-  padding-top: 4px;
+.navbar__mobile-sub a:hover,
+.navbar__mobile-sub a.is-current {
+  color: var(--color-white);
+  border-color: var(--color-gold);
+}
+.navbar__mobile-sub-inner {
+  padding-bottom: var(--space-3);
+}
+
+/* ---- CTA + kontakt längst ner i drawern ---- */
+.navbar__mobile-cta {
+  margin-top: auto;
+  padding-top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.navbar__mobile-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 24px;
+  border-radius: var(--radius-pill);
+  background: var(--color-gold);
+  color: #2a1c00;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 10px 28px rgba(242, 168, 29, 0.28);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
+    background var(--dur) var(--ease);
+}
+.navbar__mobile-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--dur) var(--ease);
+}
+.navbar__mobile-btn:hover {
+  background: var(--color-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(242, 168, 29, 0.4);
+}
+.navbar__mobile-btn:hover svg {
+  transform: translateX(3px);
+}
+.navbar__mobile-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+.navbar__mobile-contact {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: var(--fs-small);
+  transition: color var(--dur) var(--ease);
+}
+.navbar__mobile-contact:hover {
+  color: var(--color-gold);
 }
 
 @media (max-width: 940px) {
