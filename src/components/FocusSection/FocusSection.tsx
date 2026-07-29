@@ -42,13 +42,15 @@ function FocusIcon() {
 
 export default function FocusSection() {
   const ref = useReveal<HTMLDivElement>()
+  const gridRef = useReveal<HTMLDivElement>({ threshold: 0.2 })
 
   return (
     <section className="focus section" id="fokus">
       <div ref={ref} className="focus__inner container reveal">
+        <span className="section-eyebrow">PPM &amp; ISK</span>
         <h2 className="section-heading section-heading--center">Fokus på PPM och ISK</h2>
 
-        <div className="focus__grid">
+        <div ref={gridRef} className="focus__grid stagger">
           {CARDS.map((card) => (
             <article key={card.tag} className="focus-card">
               <div className="focus-card__icon">

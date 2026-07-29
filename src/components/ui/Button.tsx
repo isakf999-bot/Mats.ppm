@@ -21,14 +21,16 @@ export default function Button({
   className = '',
   onClick,
 }: ButtonProps) {
-  const cls = `btn btn--${variant} ${full ? 'btn--full' : ''} ${className}`
+  const cls = `btn btn--${variant} ${full ? 'btn--full' : ''} ${arrow ? 'btn--has-icon' : ''} ${className}`
   const content = (
     <>
-      <span>{children}</span>
+      <span className="btn__label">{children}</span>
       {arrow && (
-        <svg className="btn__arrow" viewBox="0 0 16 12" aria-hidden="true">
-          <path d="M1 6H14M14 6L9 1M14 6L9 11" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <span className="btn__icon" aria-hidden="true">
+          <svg className="btn__arrow" viewBox="0 0 16 12">
+            <path d="M1 6H14M14 6L9 1M14 6L9 11" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
       )}
     </>
   )

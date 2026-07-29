@@ -83,13 +83,34 @@
   box-shadow: var(--shadow-card-hover);
 }
 
-/* Utvalt kort sticker ut via färg + skugga + gyllene ram – inte uppskalning,
-   så all text förblir exakt samma storlek och rader linjerar mellan korten. */
+/* Spotlight-border på de vanliga korten (position:absolute → ej grid-item,
+   bryter inte subgrid-linjeringen) */
+.price-card:not(.price-card--featured)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(242, 168, 29, 0.6), transparent 45%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease);
+}
+.price-card:not(.price-card--featured):hover::after {
+  opacity: 1;
+}
+
+/* Utvalt kort sticker ut via färg + skugga + gyllene ram + inre topp-highlight
+   ("machined edge"), inte uppskalning – all text förblir samma storlek. */
 .price-card--featured {
   background: var(--color-navy);
   border-color: var(--color-navy);
   color: rgba(255, 255, 255, 0.85);
-  box-shadow: var(--shadow-lg), 0 0 0 1.5px var(--color-gold);
+  box-shadow: var(--shadow-lg), 0 0 0 1.5px var(--color-gold),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .price-card__badge {

@@ -13,30 +13,52 @@
   margin-bottom: var(--space-4);
 }
 
+/* Numrerade editorial-kort (inte generiska vita boxar).
+   Stort index-nummer + gyllene topp-hairline som tänds på hover. */
 .access-card {
   position: relative;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  padding: var(--space-5) var(--space-4);
   border-radius: var(--radius-lg);
-  padding: var(--space-5);
-  box-shadow: var(--shadow-card);
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
-    border-color var(--dur) var(--ease);
+  overflow: hidden;
+  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
 }
-
-.access-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--color-border-strong);
-}
-
-.access-card__index {
-  display: block;
-  width: 40px;
-  height: 4px;
+.access-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--space-4);
+  right: var(--space-4);
+  height: 2px;
   border-radius: var(--radius-pill);
-  background: var(--color-gold);
+  background: var(--color-border-strong);
+  transition: background var(--dur) var(--ease), left var(--dur) var(--ease),
+    right var(--dur) var(--ease);
+}
+.access-card:hover {
+  background: var(--color-surface);
+  transform: translateY(-4px);
+}
+.access-card:hover::before {
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-soft));
+}
+
+.access-card__num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-gold-hover);
   margin-bottom: var(--space-3);
+  transition: color var(--dur) var(--ease), -webkit-text-stroke-color var(--dur) var(--ease);
+}
+.access-card:hover .access-card__num {
+  color: var(--color-gold-hover);
+  -webkit-text-stroke-color: transparent;
 }
 
 .access-card__title {

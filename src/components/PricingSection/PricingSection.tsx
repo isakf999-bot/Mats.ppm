@@ -62,10 +62,12 @@ const formatKr = (n: number) => new Intl.NumberFormat('sv-SE').format(n)
 export default function PricingSection() {
   const [yearly, setYearly] = useState(false)
   const ref = useReveal<HTMLDivElement>()
+  const gridRef = useReveal<HTMLDivElement>({ threshold: 0.15 })
 
   return (
     <section className="pricing section" id="pris">
       <div ref={ref} className="pricing__inner container reveal">
+        <span className="section-eyebrow">Priser</span>
         <h2 className="section-heading section-heading--center">Vad kostar det?</h2>
 
         <div className="pricing__toggle" role="tablist" aria-label="Betalningsperiod">
@@ -87,7 +89,7 @@ export default function PricingSection() {
           </button>
         </div>
 
-        <div className="pricing__grid">
+        <div ref={gridRef} className="pricing__grid stagger">
           {PLANS.map((plan, i) => (
             <article
               key={i}

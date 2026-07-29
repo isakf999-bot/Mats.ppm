@@ -9,6 +9,7 @@
 }
 
 .focus-card {
+  position: relative;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -20,10 +21,29 @@
     border-color var(--dur) var(--ease);
 }
 
+/* Spotlight-border: gyllene gradient-ram som tänds på hover */
+.focus-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(242, 168, 29, 0.6), transparent 45%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease);
+}
+
 .focus-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-card-hover);
   border-color: var(--color-border-strong);
+}
+.focus-card:hover::after {
+  opacity: 1;
 }
 
 .focus-card__icon {

@@ -75,8 +75,8 @@
   --space-9: 128px;
 
   /* ---- Typografi ---- */
-  --font-display: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'Cabinet Grotesk', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Satoshi', 'Segoe UI', system-ui, -apple-system, sans-serif;
 
   /* Typescale (~1.25 ratio) */
   --fs-caption: 0.8125rem;   /* 13px */

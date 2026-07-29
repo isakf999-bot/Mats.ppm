@@ -19,16 +19,20 @@ const CARDS = [
 
 export default function AccessSection() {
   const ref = useReveal<HTMLDivElement>()
+  const gridRef = useReveal<HTMLDivElement>({ threshold: 0.2 })
 
   return (
     <section className="access section" id="tjanst">
       <div ref={ref} className="access__inner container reveal">
+        <span className="section-eyebrow">Insyn</span>
         <h2 className="section-heading section-heading--center">Det du får tillgång till</h2>
 
-        <div className="access__grid">
-          {CARDS.map((card) => (
+        <div ref={gridRef} className="access__grid stagger">
+          {CARDS.map((card, i) => (
             <article key={card.title} className="access-card">
-              <span className="access-card__index" aria-hidden="true" />
+              <span className="access-card__num" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
               <h3 className="access-card__title">{card.title}</h3>
               <p className="access-card__text">{card.text}</p>
             </article>

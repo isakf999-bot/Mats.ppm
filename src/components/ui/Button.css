@@ -15,13 +15,42 @@
   white-space: nowrap;
 }
 
-.btn__arrow {
-  width: 16px;
-  height: 12px;
-  transition: transform var(--dur) var(--ease);
+/* Button-in-button: pilen bor i sin egen cirkel, flush med högerkanten */
+.btn--has-icon {
+  gap: 14px;
+  padding-right: 7px;
 }
-.btn:hover .btn__arrow {
-  transform: translateX(4px);
+.btn__icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-pill);
+  background: rgba(0, 0, 0, 0.12);
+  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+    background var(--dur) var(--ease);
+}
+.btn__arrow {
+  width: 15px;
+  height: 11px;
+  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+}
+/* Magnetisk hover: cirkeln glider diagonalt + skalar, knappen trycks ned vid klick */
+.btn:hover .btn__icon {
+  transform: translate(2px, -1px) scale(1.06);
+}
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Ikon-cirkelns ton per variant */
+.btn--navy .btn__icon,
+.btn--secondary .btn__icon {
+  background: rgba(255, 255, 255, 0.16);
+}
+.btn--secondary .btn__icon,
+.btn--ghost .btn__icon {
+  background: rgba(22, 41, 77, 0.1);
 }
 
 .btn--full {
@@ -38,9 +67,6 @@
   background: var(--color-gold-hover);
   transform: translateY(-2px);
 }
-.btn--primary:active {
-  transform: translateY(0);
-}
 
 /* Navy — mörkblå */
 .btn--navy {
@@ -50,9 +76,6 @@
 .btn--navy:hover {
   background: var(--color-navy-hover);
   transform: translateY(-2px);
-}
-.btn--navy:active {
-  transform: translateY(0);
 }
 
 /* Sekundär — outline */
