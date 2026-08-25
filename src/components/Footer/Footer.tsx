@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Logo from '../Logo/Logo'
 import './Footer.css'
 
@@ -78,11 +79,11 @@ export default function Footer() {
 
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
-          <div className="footer__legal">
-            <a href="#">Integritetspolicy</a>
+          <nav className="footer__legal" aria-label="Juridisk information">
+            <Link to="/integritetspolicy">Integritetspolicy</Link>
             <span aria-hidden="true">|</span>
-            <a href="#">Allmänna villkor</a>
-          </div>
+            <Link to="/allmanna-villkor">Allmänna villkor</Link>
+          </nav>
           <p className="footer__copy">
             © Mats Svensson 2026 | Producerad av{' '}
             <a

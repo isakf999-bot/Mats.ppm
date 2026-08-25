@@ -12,6 +12,8 @@ import OmMats from './pages/OmMats/OmMats'
 import Kundtjanst from './pages/Kundtjanst/Kundtjanst'
 import FragorSvar from './pages/FragorSvar/FragorSvar'
 import UppdateraUppgifter from './pages/UppdateraUppgifter/UppdateraUppgifter'
+import AllmannaVillkor from './pages/AllmannaVillkor/AllmannaVillkor'
+import Integritetspolicy from './pages/Integritetspolicy/Integritetspolicy'
 import NotFound from './pages/NotFound/NotFound'
 
 export default function App() {
@@ -39,6 +41,10 @@ export default function App() {
           <Route path="/kundtjanst" element={<Kundtjanst />} />
           <Route path="/fragor-svar" element={<FragorSvar />} />
           <Route path="/uppdatera-kunduppgifter" element={<UppdateraUppgifter />} />
+
+          {/* Juridiskt */}
+          <Route path="/allmanna-villkor" element={<AllmannaVillkor />} />
+          <Route path="/integritetspolicy" element={<Integritetspolicy />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>

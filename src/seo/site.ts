@@ -88,6 +88,18 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       'Uppdatera dina kunduppgifter för Mats fondbytesinformation – e-post, telefon och övriga uppgifter.',
     path: '/uppdatera-kunduppgifter',
   },
+  '/allmanna-villkor': {
+    title: 'Allmänna villkor | Mats Svensson',
+    description:
+      'Allmänna villkor för Mats Svensson 2000 AB – abonnemang, betalning, ångerrätt och ansvar för fondbytesinformationen.',
+    path: '/allmanna-villkor',
+  },
+  '/integritetspolicy': {
+    title: 'Integritetspolicy | Mats Svensson',
+    description:
+      'Hur Mats Svensson 2000 AB behandlar personuppgifter enligt GDPR – ändamål, laglig grund, lagringstid och dina rättigheter.',
+    path: '/integritetspolicy',
+  },
 }
 
 export function getSeoForPath(pathname: string): PageSeo {
