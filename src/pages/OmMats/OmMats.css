@@ -15,6 +15,18 @@
   height: auto;
 }
 
+.om-mats__content a {
+  color: var(--color-navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--dur) var(--ease);
+}
+
+.om-mats__content a:hover {
+  color: var(--color-gold-hover);
+}
+
 @media (max-width: 900px) {
   .om-mats__inner {
     grid-template-columns: 1fr;

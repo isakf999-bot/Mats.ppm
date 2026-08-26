@@ -31,7 +31,7 @@ export default function VideoSection() {
   return (
     <section className="video section" id="video">
       <div ref={ref} className="video__inner container reveal">
-        <span className="eyebrow video__eyebrow">Guider &amp; kundröster</span>
+        <span className="eyebrow video__eyebrow">Kundröster</span>
         <h2 className="section-heading video__heading">
           Se hur enkelt det är att byta fonder och vad kunderna säger om tjänsten
         </h2>

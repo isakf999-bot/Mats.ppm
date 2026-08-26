@@ -10,6 +10,7 @@ interface ButtonProps {
   arrow?: boolean
   className?: string
   onClick?: () => void
+  type?: 'button' | 'submit' | 'reset'
 }
 
 export default function Button({
@@ -20,6 +21,7 @@ export default function Button({
   arrow = false,
   className = '',
   onClick,
+  type = 'button',
 }: ButtonProps) {
   const cls = `btn btn--${variant} ${full ? 'btn--full' : ''} ${arrow ? 'btn--has-icon' : ''} ${className}`
   const content = (
@@ -43,7 +45,7 @@ export default function Button({
     )
   }
   return (
-    <button className={cls} onClick={onClick} type="button">
+    <button className={cls} onClick={onClick} type={type}>
       {content}
     </button>
   )

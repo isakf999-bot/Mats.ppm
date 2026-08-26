@@ -99,7 +99,7 @@ export default function StructureSection() {
             utifrån marknaden och hur jag tolkar den.
           </p>
           <p className="structure__text">
-            Du ser inte bara förändringar i portföljen, du får förstå
+            Du ser inte bara förändringar i PPM/ISK portföljerna, du får förstå
             resonemanget bakom dem. Fokus ligger på processen över tid, inte
             snabba tips eller kortsiktiga signaler.
           </p>

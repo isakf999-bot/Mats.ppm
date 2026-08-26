@@ -44,6 +44,18 @@ export default function OmMats() {
               utan som ett sätt att ge mer kunskap och förståelse för processen
               bakom besluten.
             </p>
+            <p>
+              Jag driver även en tjänst med betoning på personlig utveckling. Du
+              kan läsa mer om detta på{' '}
+              <a
+                href="https://kongruens.se"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                kongruens.se
+              </a>
+              .
+            </p>
           </div>
 
           <figure className="om-mats__media media-frame">

@@ -62,9 +62,11 @@
 /* ---- Grid ---- */
 .pricing__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-4);
   align-items: stretch; /* alla kort lika höga → raderna linjerar */
+  max-width: 820px;
+  margin-inline: auto;
 }
 
 .price-card {

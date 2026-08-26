@@ -33,26 +33,13 @@ const PLANS: Plan[] = [
     desc: 'Ta del av Mats fondbytesinformation för de PPM & ISK fonder han väljer i sitt privata sparande',
     monthly: 217,
     yearly: 1997,
+    featured: true,
+    badge: 'Populärast',
     features: [
       'Ta del av mina fondbytesbeslut för PPM och ISK-fonder över tid',
       'Utskick av E-mail samma dag Mats byter sina fonder',
       'Utskick av SMS samma dag Mats byter sina fonder',
       'Marknadsanalys vare månad via nyhetsbrev',
-    ],
-  },
-  {
-    name: 'For The Future by Mats',
-    subtitle: '(PPM & ISK plus Skool Premium)',
-    desc: 'Ta del av Mats fondbytesinformation för de PPM & ISK fonder han väljer i sitt privata sparande',
-    monthly: 367,
-    yearly: 2997,
-    featured: true,
-    badge: 'Populärast',
-    features: [
-      'Utskick av Email samma dag Mats byter sina fonder.',
-      'Utskick av SMS samma dag Mats byter sina fonder.',
-      'Marknadsanalys varje månad via nyhetsbrev.',
-      'Skool Premium med alla kurser, föreläsningar, Q&A varje vecka',
     ],
   },
 ]

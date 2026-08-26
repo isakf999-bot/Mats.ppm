@@ -91,7 +91,7 @@
   /* ---- Layout ---- */
   --container: 1160px;
   --container-narrow: 940px;
-  --nav-height: 76px;
+  --nav-height: 108px;
 
   /* ---- Motion ---- */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);

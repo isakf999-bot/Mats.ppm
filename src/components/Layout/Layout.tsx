@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 import SeoHead from '../SeoHead/SeoHead'
+import NewsletterPopup from '../NewsletterPopup/NewsletterPopup'
 
 /** Scrollar till toppen vid sidbyte (men respekterar #ankarlänkar). */
 function ScrollToTop() {
@@ -29,6 +30,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <NewsletterPopup />
     </>
   )
 }

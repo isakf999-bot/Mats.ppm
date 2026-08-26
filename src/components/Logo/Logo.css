@@ -9,7 +9,12 @@
   display: block;
 }
 
-/* Enbart monogram (navbar): renderas större eftersom textdelen är borttagen */
+/* Navbar: full logga (svart M + gul text) ska få plats i sticky-baren */
+.navbar .logo__img {
+  height: 88px;
+}
+
+/* Enbart monogram: renderas större eftersom textdelen är borttagen */
 .logo--mark .logo__img {
   height: 60px;
 }

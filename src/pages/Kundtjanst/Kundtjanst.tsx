@@ -19,12 +19,6 @@ export default function Kundtjanst() {
             </a>
             . Vill du bli uppringd kan du fylla i formuläret nedan.
           </p>
-          <p>
-            Har du frågor kring din faktura mailar du{' '}
-            <a className="page-link" href="mailto:faktura@mats-svensson.se">
-              faktura@mats-svensson.se
-            </a>
-          </p>
         </div>
 
         <div className="container kt__form-block">

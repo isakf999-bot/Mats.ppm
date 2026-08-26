@@ -53,9 +53,9 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     path: '/nyhetsarkiv',
   },
   '/mats-ppm-konto': {
-    title: 'Mats PPM-konto & ISK-historik | Resultat',
+    title: 'Mats PPM-konto | Resultat',
     description:
-      'Följ värdeutvecklingen på Mats egna PPM- och ISK-konton år för år – transparent historik.',
+      'Följ värdeutvecklingen på Mats egna PPM-konto år för år – transparent historik.',
     path: '/mats-ppm-konto',
   },
   '/statistik': {
