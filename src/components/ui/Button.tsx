@@ -11,6 +11,8 @@ interface ButtonProps {
   className?: string
   onClick?: () => void
   type?: 'button' | 'submit' | 'reset'
+  /** Öppna extern länk i ny flik */
+  external?: boolean
 }
 
 export default function Button({
@@ -22,6 +24,7 @@ export default function Button({
   className = '',
   onClick,
   type = 'button',
+  external = false,
 }: ButtonProps) {
   const cls = `btn btn--${variant} ${full ? 'btn--full' : ''} ${arrow ? 'btn--has-icon' : ''} ${className}`
   const content = (
@@ -39,7 +42,14 @@ export default function Button({
 
   if (href) {
     return (
-      <a className={cls} href={href} onClick={onClick}>
+      <a
+        className={cls}
+        href={href}
+        onClick={onClick}
+        {...(external
+          ? { target: '_blank', rel: 'noopener noreferrer' }
+          : {})}
+      >
         {content}
       </a>
     )

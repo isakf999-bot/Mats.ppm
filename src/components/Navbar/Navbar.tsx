@@ -25,6 +25,7 @@ const NAV_ITEMS: NavItem[] = [
       { label: 'Så här byter du fonder', to: '/sa-har-byter-du-fond' },
       { label: 'Senaste fondbytet', to: '/senaste-fondbytet' },
       { label: 'Nyhetsarkiv', to: '/nyhetsarkiv' },
+      { label: 'For The Future by Mats', to: '/skool' },
     ],
   },
   {

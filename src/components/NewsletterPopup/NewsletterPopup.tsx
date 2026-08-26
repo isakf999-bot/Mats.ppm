@@ -54,7 +54,9 @@ export default function NewsletterPopup() {
           <h2 id={`${formId}-title`} className="nl-popup__title">
             Haka på mitt Nyhetsbrev.
           </h2>
-          <p className="nl-popup__subtitle">Det är helt gratis</p>
+          <p className="nl-popup__subtitle">
+            Det är helt gratis – med månatliga marknadsanalyser
+          </p>
         </header>
 
         {sent ? (

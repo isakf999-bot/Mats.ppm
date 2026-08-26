@@ -14,6 +14,7 @@ import FragorSvar from './pages/FragorSvar/FragorSvar'
 import UppdateraUppgifter from './pages/UppdateraUppgifter/UppdateraUppgifter'
 import AllmannaVillkor from './pages/AllmannaVillkor/AllmannaVillkor'
 import Integritetspolicy from './pages/Integritetspolicy/Integritetspolicy'
+import Skool from './pages/Skool/Skool'
 import NotFound from './pages/NotFound/NotFound'
 
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/sa-har-byter-du-fond" element={<ByterFonder />} />
           <Route path="/senaste-fondbytet" element={<SenasteFondbytet />} />
           <Route path="/nyhetsarkiv" element={<Nyhetsarkiv />} />
+          <Route path="/skool" element={<Skool />} />
 
           {/* Resultat */}
           <Route path="/mats-ppm-konto" element={<PpmKonto />} />

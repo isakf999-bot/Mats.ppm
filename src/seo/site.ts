@@ -52,6 +52,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       'Arkiv med Mats Svenssons nyhetsbrev och marknadsanalyser kring fondsparande, PPM och ISK.',
     path: '/nyhetsarkiv',
   },
+  '/skool': {
+    title: 'For The Future by Mats | Community på Skool',
+    description:
+      'Ett digitalt community för stabil och medveten framtid – långsiktigt sparande, marknadsförståelse, mindset och tryggt lärande tillsammans.',
+    path: '/skool',
+  },
   '/mats-ppm-konto': {
     title: 'Mats PPM-konto | Resultat',
     description:

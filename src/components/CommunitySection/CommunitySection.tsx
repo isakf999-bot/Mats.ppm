@@ -22,7 +22,7 @@ export default function CommunitySection() {
             I dag består vår community av över tusen medlemmar och nu kan du bli
             en av dem.
           </p>
-          <Button href="#pris" variant="primary" arrow>
+          <Button href="/skool" variant="primary" arrow>
             Läs mer
           </Button>
         </div>

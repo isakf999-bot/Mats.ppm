@@ -21,7 +21,7 @@ export default function Hero() {
             <span className="hero__title-accent"> – i realtid</span>
           </h1>
           <p className="hero__text">
-            Följ hur jag själv arbetar med mitt fondsparande så du blir del av
+            Följ hur jag själv arbetar med mitt fondsparande och ta del av
             resonemanget bakom varje förändring över tid.
           </p>
           <p className="hero__text hero__text--muted">
