@@ -155,6 +155,26 @@
   margin-top: var(--space-1);
 }
 
+.page-form__error {
+  flex: 1 1 100%;
+  margin: var(--space-2) 0 0;
+  font-size: var(--fs-caption);
+  color: #b42318;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.page-form__success {
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: rgba(31, 157, 107, 0.1);
+  color: var(--color-positive, #1f9d6b);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
 /* ---- Videokort ---- */
 .page-videos {
   display: grid;

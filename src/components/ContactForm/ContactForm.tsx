@@ -1,5 +1,10 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import Button from '../ui/Button'
+import {
+  FORM_ERROR_FALLBACK,
+  FormWebhookError,
+  submitFormWebhook,
+} from '../../lib/webhook'
 import './ContactForm.css'
 
 interface ContactFormProps {
@@ -12,6 +17,34 @@ export default function ContactForm({
   text = 'Kontakta oss eller fyll i formuläret så kontaktar vi dig.',
 }: ContactFormProps) {
   const [sent, setSent] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setError(null)
+    setSubmitting(true)
+
+    const data = new FormData(e.currentTarget)
+
+    try {
+      await submitFormWebhook({
+        type: 'contact',
+        name: String(data.get('namn') ?? '').trim(),
+        email: String(data.get('epost') ?? '').trim(),
+        phone: String(data.get('telefon') ?? '').trim() || undefined,
+        message: String(data.get('meddelande') ?? '').trim() || undefined,
+        source: window.location.pathname,
+      })
+      setSent(true)
+    } catch (err) {
+      setError(
+        err instanceof FormWebhookError ? err.message : FORM_ERROR_FALLBACK,
+      )
+    } finally {
+      setSubmitting(false)
+    }
+  }
 
   return (
     <div className="contact-form">
@@ -41,36 +74,65 @@ export default function ContactForm({
         </ul>
       </div>
 
-      <form
-        className="contact-form__form"
-        onSubmit={(e) => {
-          e.preventDefault()
-          setSent(true)
-        }}
-      >
+      <form className="contact-form__form" onSubmit={onSubmit}>
         <div className="contact-form__field">
           <label htmlFor="cf-namn">Namn</label>
-          <input id="cf-namn" className="contact-input" type="text" name="namn" placeholder="Ditt namn" required />
+          <input
+            id="cf-namn"
+            className="contact-input"
+            type="text"
+            name="namn"
+            placeholder="Ditt namn"
+            required
+            disabled={submitting || sent}
+          />
         </div>
         <div className="contact-form__field">
           <label htmlFor="cf-epost">E-post</label>
-          <input id="cf-epost" className="contact-input" type="email" name="epost" placeholder="din@epost.se" required />
+          <input
+            id="cf-epost"
+            className="contact-input"
+            type="email"
+            name="epost"
+            placeholder="din@epost.se"
+            required
+            disabled={submitting || sent}
+          />
         </div>
         <div className="contact-form__field">
           <label htmlFor="cf-tel">Telefon</label>
-          <input id="cf-tel" className="contact-input" type="tel" name="telefon" placeholder="Ditt telefonnummer" />
+          <input
+            id="cf-tel"
+            className="contact-input"
+            type="tel"
+            name="telefon"
+            placeholder="Ditt telefonnummer"
+            disabled={submitting || sent}
+          />
         </div>
         <div className="contact-form__field contact-form__field--full">
           <label htmlFor="cf-meddelande">Meddelande</label>
-          <textarea id="cf-meddelande" className="contact-input contact-textarea" name="meddelande" rows={4} placeholder="Skriv ditt meddelande här…" />
+          <textarea
+            id="cf-meddelande"
+            className="contact-input contact-textarea"
+            name="meddelande"
+            rows={4}
+            placeholder="Skriv ditt meddelande här…"
+            disabled={submitting || sent}
+          />
         </div>
         <div className="contact-form__actions">
-          <Button variant="primary" arrow>
-            Skicka meddelande
+          <Button type="submit" variant="primary" arrow disabled={submitting || sent}>
+            {submitting ? 'Skickar…' : 'Skicka meddelande'}
           </Button>
           {sent && (
             <span className="contact-form__hint" role="status">
               Tack! Vi hör av oss så snart vi kan.
+            </span>
+          )}
+          {error && (
+            <span className="contact-form__error" role="alert">
+              {error}
             </span>
           )}
         </div>

@@ -1,8 +1,41 @@
+import { FormEvent, useState } from 'react'
 import PageHero from '../../components/PageHero/PageHero'
 import Button from '../../components/ui/Button'
+import {
+  FORM_ERROR_FALLBACK,
+  FormWebhookError,
+  submitFormWebhook,
+} from '../../lib/webhook'
 import '../shared/pageShared.css'
 
 export default function UppdateraUppgifter() {
+  const [sent, setSent] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setError(null)
+    setSubmitting(true)
+
+    const data = new FormData(e.currentTarget)
+
+    try {
+      await submitFormWebhook({
+        type: 'update',
+        email: String(data.get('email') ?? '').trim(),
+        source: '/uppdatera-kunduppgifter',
+      })
+      setSent(true)
+    } catch (err) {
+      setError(
+        err instanceof FormWebhookError ? err.message : FORM_ERROR_FALLBACK,
+      )
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
   return (
     <>
       <PageHero eyebrow="Kontakt/support" title="Uppdatera dina kunduppgifter" />
@@ -17,22 +50,35 @@ export default function UppdateraUppgifter() {
             uppgifter.
           </p>
 
-          <form className="page-form" onSubmit={(e) => e.preventDefault()}>
-            <label className="sr-only" htmlFor="epost-uppdatera">
-              E-postadress
-            </label>
-            <input
-              id="epost-uppdatera"
-              className="page-input"
-              type="email"
-              name="email"
-              placeholder="Din e-postadress"
-              required
-            />
-            <Button variant="primary" arrow>
-              Skicka
-            </Button>
-          </form>
+          {sent ? (
+            <p className="page-form__success" role="status">
+              Tack! Om din e-post finns som kund skickar vi en länk där du kan
+              uppdatera dina uppgifter.
+            </p>
+          ) : (
+            <form className="page-form" onSubmit={onSubmit}>
+              <label className="sr-only" htmlFor="epost-uppdatera">
+                E-postadress
+              </label>
+              <input
+                id="epost-uppdatera"
+                className="page-input"
+                type="email"
+                name="email"
+                placeholder="Din e-postadress"
+                required
+                disabled={submitting}
+              />
+              <Button type="submit" variant="primary" arrow disabled={submitting}>
+                {submitting ? 'Skickar…' : 'Skicka'}
+              </Button>
+              {error && (
+                <p className="page-form__error" role="alert">
+                  {error}
+                </p>
+              )}
+            </form>
+          )}
         </div>
       </section>
     </>

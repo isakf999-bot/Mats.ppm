@@ -19,20 +19,24 @@
   background-position: right center;
   background-size: cover;
   transform: translateX(16%);
+  /* Crusha fotons kolgråa toner mot rent #000 */
+  filter: contrast(1.14) brightness(0.94) saturate(1.03);
   z-index: -3;
 }
 
 .skool-hero__scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    var(--color-black) 0%,
-    var(--color-black) 26%,
-    rgba(10, 10, 11, 0.85) 42%,
-    rgba(10, 10, 11, 0.2) 62%,
-    transparent 78%
-  );
+  background:
+    linear-gradient(
+      90deg,
+      #000 0%,
+      #000 24%,
+      rgba(0, 0, 0, 0.82) 42%,
+      rgba(0, 0, 0, 0.2) 64%,
+      transparent 80%
+    ),
+    linear-gradient(0deg, #000 0%, transparent 28%);
   z-index: -2;
 }
 
@@ -41,7 +45,7 @@
   inset: 0;
   z-index: -2;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.35;
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
@@ -56,7 +60,7 @@
   left: 6%;
   width: 620px;
   height: 620px;
-  background: radial-gradient(circle, rgba(242, 168, 29, 0.18) 0%, transparent 62%);
+  background: radial-gradient(circle, rgba(242, 168, 29, 0.14) 0%, transparent 62%);
   pointer-events: none;
   z-index: -1;
 }
@@ -81,9 +85,9 @@
 .skool-hero__inner {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   min-height: 380px;
-  padding-block: var(--space-6);
+  padding-block: var(--space-6) var(--space-4);
 }
 
 .skool-hero__wordmark {
@@ -196,31 +200,48 @@
   height: auto;
 }
 
+/* ---- Tablet / mobil: en enda svart yta, ingen “två svarta” ---- */
 @media (max-width: 900px) {
   .skool-hero__bg {
-    background-size: cover;
-    background-position: 72% center;
-    transform: translateX(4%);
-    opacity: 0.55;
+    transform: none;
+    background-position: 68% center;
+    opacity: 1;
+    filter: contrast(1.18) brightness(0.9) saturate(1.02);
   }
 
   .skool-hero__scrim {
-    background: linear-gradient(
-      90deg,
-      var(--color-black) 0%,
-      rgba(10, 10, 11, 0.75) 55%,
-      rgba(10, 10, 11, 0.55) 100%
-    );
+    background:
+      linear-gradient(
+        90deg,
+        #000 0%,
+        rgba(0, 0, 0, 0.88) 28%,
+        rgba(0, 0, 0, 0.35) 58%,
+        rgba(0, 0, 0, 0.55) 100%
+      ),
+      linear-gradient(0deg, #000 0%, transparent 42%),
+      radial-gradient(90% 80% at 70% 40%, transparent 35%, #000 100%);
+  }
+
+  .skool-hero__grid {
+    opacity: 0.15;
+  }
+
+  .skool-hero__glow {
+    opacity: 0.55;
   }
 
   .skool-hero__inner {
-    min-height: 320px;
-    padding-block: var(--space-5);
+    min-height: 300px;
+    align-items: flex-end;
+    justify-content: center;
+    padding-block: var(--space-5) var(--space-3);
   }
 
   .skool-hero__wordmark {
-    width: min(100%, 280px);
-    transform: scale(1.2);
+    width: min(78%, 280px);
+    margin-inline: auto;
+    transform: scale(1.15);
+    transform-origin: center;
   }
 
   .skool-body__grid {
@@ -234,25 +255,41 @@
 }
 
 @media (max-width: 600px) {
+  /* Behåll hel heroyta – ingen bildband + separat svart under */
   .skool-hero__bg {
-    inset: 0 0 auto 0;
-    height: 280px;
-    background-position: 66% center;
+    inset: 0;
+    height: auto;
+    background-position: 70% center;
     background-size: cover;
     transform: none;
     opacity: 1;
+    filter: contrast(1.2) brightness(0.88) saturate(1.02);
   }
 
   .skool-hero__scrim {
-    inset: 0 0 auto 0;
-    height: 280px;
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      transparent 52%,
-      rgba(10, 10, 11, 0.7) 82%,
-      var(--color-black) 100%
-    );
+    inset: 0;
+    height: auto;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.5) 0%,
+        transparent 22%,
+        transparent 48%,
+        rgba(0, 0, 0, 0.7) 78%,
+        #000 100%
+      ),
+      linear-gradient(
+        90deg,
+        #000 0%,
+        rgba(0, 0, 0, 0.75) 26%,
+        rgba(0, 0, 0, 0.25) 52%,
+        rgba(0, 0, 0, 0.5) 100%
+      ),
+      radial-gradient(80% 70% at 72% 42%, transparent 30%, #000 100%);
+  }
+
+  .skool-hero__grid {
+    display: none;
   }
 
   .skool-hero__glow {
@@ -260,16 +297,25 @@
   }
 
   .skool-hero__inner {
-    display: block;
-    min-height: 0;
-    padding-top: 260px;
-    padding-bottom: var(--space-5);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 360px;
+    padding: var(--space-5) var(--space-4) var(--space-3);
   }
 
   .skool-hero__wordmark {
     margin-inline: auto;
-    width: min(72%, 240px);
-    transform: scale(1.15);
+    width: min(70%, 220px);
+    transform: scale(1.08);
     transform-origin: center;
+  }
+
+  .skool-body {
+    padding-block: var(--space-5);
+  }
+
+  .skool-media {
+    border-radius: var(--radius-md);
   }
 }

@@ -1,6 +1,11 @@
 import { FormEvent, useEffect, useId, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Button from '../ui/Button'
+import {
+  FORM_ERROR_FALLBACK,
+  FormWebhookError,
+  submitFormWebhook,
+} from '../../lib/webhook'
 import './NewsletterPopup.css'
 
 const DELAY_MS = 3500
@@ -8,7 +13,6 @@ const STORAGE_KEY = 'mats-nl-popup-dismissed'
 
 function wasDismissed(): boolean {
   try {
-    // Rensa gammal permanent flagga som kunde låsa popupen för alltid
     localStorage.removeItem(STORAGE_KEY)
     return sessionStorage.getItem(STORAGE_KEY) === '1'
   } catch {
@@ -29,6 +33,8 @@ export default function NewsletterPopup() {
   const formId = useId()
   const [visible, setVisible] = useState(false)
   const [sent, setSent] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     if (wasDismissed()) return
@@ -42,10 +48,32 @@ export default function NewsletterPopup() {
     setVisible(false)
   }
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    markDismissed()
-    setSent(true)
+    setError(null)
+    setSubmitting(true)
+
+    const form = e.currentTarget
+    const data = new FormData(form)
+
+    try {
+      await submitFormWebhook({
+        type: 'newsletter',
+        firstName: String(data.get('fornamn') ?? '').trim(),
+        lastName: String(data.get('efternamn') ?? '').trim(),
+        email: String(data.get('epost') ?? '').trim(),
+        consent: data.get('consent') != null,
+        source: 'newsletter-popup',
+      })
+      markDismissed()
+      setSent(true)
+    } catch (err) {
+      setError(
+        err instanceof FormWebhookError ? err.message : FORM_ERROR_FALLBACK,
+      )
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (!visible) return null
@@ -102,6 +130,7 @@ export default function NewsletterPopup() {
                   placeholder="Förnamn"
                   autoComplete="given-name"
                   required
+                  disabled={submitting}
                 />
               </div>
               <div className="nl-popup__field">
@@ -114,6 +143,7 @@ export default function NewsletterPopup() {
                   placeholder="Efternamn"
                   autoComplete="family-name"
                   required
+                  disabled={submitting}
                 />
               </div>
             </div>
@@ -128,12 +158,19 @@ export default function NewsletterPopup() {
                 placeholder="E-post"
                 autoComplete="email"
                 required
+                disabled={submitting}
               />
             </div>
 
             <div className="nl-popup__footer">
               <label className="nl-popup__consent">
-                <input type="checkbox" name="consent" required defaultChecked />
+                <input
+                  type="checkbox"
+                  name="consent"
+                  required
+                  defaultChecked
+                  disabled={submitting}
+                />
                 <span>
                   Jag godkänner{' '}
                   <Link to="/integritetspolicy" target="_blank" rel="noopener noreferrer">
@@ -142,10 +179,22 @@ export default function NewsletterPopup() {
                 </span>
               </label>
 
-              <Button type="submit" variant="primary" arrow className="nl-popup__submit">
-                Skicka
+              <Button
+                type="submit"
+                variant="primary"
+                arrow
+                className="nl-popup__submit"
+                disabled={submitting}
+              >
+                {submitting ? 'Skickar…' : 'Skicka'}
               </Button>
             </div>
+
+            {error && (
+              <p className="nl-popup__error" role="alert">
+                {error}
+              </p>
+            )}
           </form>
         )}
       </div>

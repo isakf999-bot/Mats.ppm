@@ -17,7 +17,7 @@ export default function Nyhetsarkiv() {
           <p>Jag har samlat alla dessa nyhetsbrev som du kan läsa här.</p>
 
           <div className="page-cta-row">
-            <Button href="#" variant="primary" arrow>
+            <Button href="https://email.mats-svensson.se/archive/18" variant="primary" arrow external>
               Läs nyhetsbreven
             </Button>
           </div>

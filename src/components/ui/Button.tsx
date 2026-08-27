@@ -13,6 +13,7 @@ interface ButtonProps {
   type?: 'button' | 'submit' | 'reset'
   /** Öppna extern länk i ny flik */
   external?: boolean
+  disabled?: boolean
 }
 
 export default function Button({
@@ -25,6 +26,7 @@ export default function Button({
   onClick,
   type = 'button',
   external = false,
+  disabled = false,
 }: ButtonProps) {
   const cls = `btn btn--${variant} ${full ? 'btn--full' : ''} ${arrow ? 'btn--has-icon' : ''} ${className}`
   const content = (
@@ -55,7 +57,7 @@ export default function Button({
     )
   }
   return (
-    <button className={cls} onClick={onClick} type={type}>
+    <button className={cls} onClick={onClick} type={type} disabled={disabled}>
       {content}
     </button>
   )

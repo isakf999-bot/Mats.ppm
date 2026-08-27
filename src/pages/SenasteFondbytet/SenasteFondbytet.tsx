@@ -1,8 +1,41 @@
+import { FormEvent, useState } from 'react'
 import PageHero from '../../components/PageHero/PageHero'
 import Button from '../../components/ui/Button'
+import {
+  FORM_ERROR_FALLBACK,
+  FormWebhookError,
+  submitFormWebhook,
+} from '../../lib/webhook'
 import '../shared/pageShared.css'
 
 export default function SenasteFondbytet() {
+  const [sent, setSent] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setError(null)
+    setSubmitting(true)
+
+    const data = new FormData(e.currentTarget)
+
+    try {
+      await submitFormWebhook({
+        type: 'latest-fund',
+        email: String(data.get('email') ?? '').trim(),
+        source: '/senaste-fondbytet',
+      })
+      setSent(true)
+    } catch (err) {
+      setError(
+        err instanceof FormWebhookError ? err.message : FORM_ERROR_FALLBACK,
+      )
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
   return (
     <>
       <PageHero eyebrow="Tjänst" title="Senaste fondbytet" />
@@ -28,28 +61,43 @@ export default function SenasteFondbytet() {
               <p>Endast för dig som är kund.</p>
             </div>
 
-            <form className="signup__body" onSubmit={(e) => e.preventDefault()}>
-              <span className="signup__label">Din e-postadress</span>
-              <div className="signup__row">
-                <label className="sr-only" htmlFor="epost-fondbyte">E-postadress</label>
-                <input
-                  id="epost-fondbyte"
-                  className="page-input"
-                  type="email"
-                  name="email"
-                  placeholder="din@epost.se"
-                  required
-                />
-                <Button variant="primary" arrow>
-                  Skicka
-                </Button>
-              </div>
-              <p className="page-form__note">
-                I samband med att du fyller i dina uppgifter bekräftar du att du
-                tagit del av min Integritetspolicy med information om hur Mats
-                Svensson 2000 AB behandlar dina personuppgifter.
+            {sent ? (
+              <p className="page-form__success" role="status">
+                Tack! Om din e-post finns som kund skickar vi senaste fondvalet
+                till dig.
               </p>
-            </form>
+            ) : (
+              <form className="signup__body" onSubmit={onSubmit}>
+                <span className="signup__label">Din e-postadress</span>
+                <div className="signup__row">
+                  <label className="sr-only" htmlFor="epost-fondbyte">
+                    E-postadress
+                  </label>
+                  <input
+                    id="epost-fondbyte"
+                    className="page-input"
+                    type="email"
+                    name="email"
+                    placeholder="din@epost.se"
+                    required
+                    disabled={submitting}
+                  />
+                  <Button type="submit" variant="primary" arrow disabled={submitting}>
+                    {submitting ? 'Skickar…' : 'Skicka'}
+                  </Button>
+                </div>
+                {error && (
+                  <p className="page-form__error" role="alert">
+                    {error}
+                  </p>
+                )}
+                <p className="page-form__note">
+                  I samband med att du fyller i dina uppgifter bekräftar du att du
+                  tagit del av min Integritetspolicy med information om hur Mats
+                  Svensson 2000 AB behandlar dina personuppgifter.
+                </p>
+              </form>
+            )}
           </div>
         </div>
       </section>
