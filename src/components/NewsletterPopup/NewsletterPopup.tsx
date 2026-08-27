@@ -4,6 +4,23 @@ import Button from '../ui/Button'
 import './NewsletterPopup.css'
 
 const DELAY_MS = 3500
+const STORAGE_KEY = 'mats-nl-popup-dismissed'
+
+function wasDismissed(): boolean {
+  try {
+    return localStorage.getItem(STORAGE_KEY) === '1'
+  } catch {
+    return false
+  }
+}
+
+function markDismissed() {
+  try {
+    localStorage.setItem(STORAGE_KEY, '1')
+  } catch {
+    /* ignore quota / private mode */
+  }
+}
 
 export default function NewsletterPopup() {
   const formId = useId()
@@ -11,14 +28,19 @@ export default function NewsletterPopup() {
   const [sent, setSent] = useState(false)
 
   useEffect(() => {
+    if (wasDismissed()) return
     const timer = window.setTimeout(() => setVisible(true), DELAY_MS)
     return () => window.clearTimeout(timer)
   }, [])
 
-  const dismiss = () => setVisible(false)
+  const dismiss = () => {
+    markDismissed()
+    setVisible(false)
+  }
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault()
+    markDismissed()
     setSent(true)
   }
 
