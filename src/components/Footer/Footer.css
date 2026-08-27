@@ -11,7 +11,22 @@
 }
 
 .footer__brand .logo {
+  margin-bottom: 0;
+}
+
+.footer__brand-link {
+  display: inline-flex;
   margin-bottom: var(--space-4);
+  transform-origin: center;
+  transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+
+.footer__brand-link:hover {
+  transform: rotate(-6deg);
+}
+
+.footer__brand-link:active {
+  transform: rotate(-6deg) scale(0.96);
 }
 
 .footer__about {

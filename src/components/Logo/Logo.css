@@ -9,7 +9,7 @@
   display: block;
 }
 
-/* Navbar: full logga (svart M + gul text) ska få plats i sticky-baren */
+/* Navbar: full logga ska få plats i sticky-baren */
 .navbar .logo__img {
   height: 88px;
 }
@@ -19,15 +19,13 @@
   height: 60px;
 }
 
-/* På mörk bakgrund (footer): färga hela loggan i brand-guld via filterkedja
-   (brightness(0) → svart, sedan colorize mot ~#f2a81d) så den syns mot navy
-   och behåller sin gyllene karaktär. */
+/* På mörk bakgrund (footer): guldlogga, något mer orange men fortfarande dämpad */
 .logo--light .logo__img {
-  filter: brightness(0) saturate(100%) invert(69%) sepia(53%) saturate(1352%)
-    hue-rotate(358deg) brightness(101%) contrast(96%);
+  filter: brightness(0) saturate(100%) invert(73%) sepia(32%) saturate(820%)
+    hue-rotate(3deg) brightness(95%) contrast(91%);
 }
 
-/* Footern använder en något större logga */
+/* Footern: samma storlek som navbaren */
 .footer .logo__img {
-  height: 84px;
+  height: 88px;
 }

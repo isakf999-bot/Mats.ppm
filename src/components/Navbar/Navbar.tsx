@@ -108,11 +108,15 @@ export default function Navbar() {
     setOpenGroup(null)
   }, [location.pathname])
 
+  const goHomeTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <>
       <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
         <div className="navbar__inner container">
-          <Link to="/" className="navbar__brand" aria-label="Till startsidan">
+          <Link to="/" className="navbar__brand" aria-label="Till startsidan" onClick={goHomeTop}>
             <Logo variant="dark" />
           </Link>
 

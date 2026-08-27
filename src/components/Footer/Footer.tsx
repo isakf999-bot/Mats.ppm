@@ -5,6 +5,7 @@ import './Footer.css'
 type IconName = 'facebook' | 'youtube' | 'instagram'
 
 const SOCIALS: { label: string; href: string; icon: IconName }[] = [
+  { label: 'Facebook', href: 'https://www.facebook.com/matssvensson2000ab', icon: 'facebook' },
   { label: 'YouTube', href: 'https://www.youtube.com/@mats-svensson', icon: 'youtube' },
   { label: 'Instagram', href: 'https://www.instagram.com/ppm_gurun/', icon: 'instagram' },
 ]
@@ -37,7 +38,14 @@ export default function Footer() {
     <footer className="footer" id="footer">
       <div className="footer__inner container">
         <div className="footer__brand">
-          <Logo variant="light" />
+          <Link
+            to="/"
+            className="footer__brand-link"
+            aria-label="Till startsidan"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <Logo variant="light" />
+          </Link>
           <p className="footer__about">
             Mats Svensson är socionom med intresse för fondsparande. Sedan 2010
             har tusentals kunder tagit del av hans Fondbytesinformation och du är

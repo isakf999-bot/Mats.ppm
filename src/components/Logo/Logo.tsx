@@ -3,7 +3,7 @@ import logotypeMark from '../../assets/logotype-mark.png'
 import './Logo.css'
 
 interface LogoProps {
-  /** 'dark' = för ljus bakgrund (loggan som den är). 'light' = för mörk bakgrund (renderas vit/guld). */
+  /** 'dark' = för ljus bakgrund (loggan som den är). 'light' = för mörk bakgrund (dämpad guld). */
   variant?: 'dark' | 'light'
   /** true = visa endast M-monogrammet (utan textdelen). */
   markOnly?: boolean
@@ -12,7 +12,7 @@ interface LogoProps {
 /**
  * Officiell logga (M-monogram + "FOR THE FUTURE BY MATS · ETABLERAT 2010").
  * markOnly visar bara monogrammet så det kan renderas större.
- * På mörk bakgrund görs loggan guld via CSS-filter för läsbarhet.
+ * På mörk bakgrund färgas loggan i dämpad guld (inte skarp orange).
  */
 export default function Logo({ variant = 'dark', markOnly = false }: LogoProps) {
   return (
