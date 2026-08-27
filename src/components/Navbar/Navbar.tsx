@@ -117,7 +117,7 @@ export default function Navbar() {
       <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
         <div className="navbar__inner container">
           <Link to="/" className="navbar__brand" aria-label="Till startsidan" onClick={goHomeTop}>
-            <Logo variant="dark" />
+            <Logo variant="light" />
           </Link>
 
           <nav className="navbar__nav" aria-label="Huvudmeny">

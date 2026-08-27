@@ -8,7 +8,9 @@ const STORAGE_KEY = 'mats-nl-popup-dismissed'
 
 function wasDismissed(): boolean {
   try {
-    return localStorage.getItem(STORAGE_KEY) === '1'
+    // Rensa gammal permanent flagga som kunde låsa popupen för alltid
+    localStorage.removeItem(STORAGE_KEY)
+    return sessionStorage.getItem(STORAGE_KEY) === '1'
   } catch {
     return false
   }
@@ -16,7 +18,8 @@ function wasDismissed(): boolean {
 
 function markDismissed() {
   try {
-    localStorage.setItem(STORAGE_KEY, '1')
+    sessionStorage.setItem(STORAGE_KEY, '1')
+    localStorage.removeItem(STORAGE_KEY)
   } catch {
     /* ignore quota / private mode */
   }
@@ -29,6 +32,7 @@ export default function NewsletterPopup() {
 
   useEffect(() => {
     if (wasDismissed()) return
+
     const timer = window.setTimeout(() => setVisible(true), DELAY_MS)
     return () => window.clearTimeout(timer)
   }, [])
