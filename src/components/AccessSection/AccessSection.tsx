@@ -41,7 +41,7 @@ export default function AccessSection() {
 
         <article className="access-feature">
           <div className="access-feature__body">
-            <h3 className="access-feature__title">En process för mer medveten fondval</h3>
+            <h3 className="access-feature__title">En process för mer medvetna fondval</h3>
             <p className="access-feature__text">
               År 2009 blev jag uppmärksammad i Dagens Industri efter ett år med
               mycket stark avkastning i mitt fondsparande. Det blev startpunkten
