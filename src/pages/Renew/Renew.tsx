@@ -8,8 +8,8 @@ export default function Renew() {
     <>
       <PageHero
         eyebrow="Abonnemang"
-        title="Förnya ditt abonnemang"
-        text="Välj ditt paket nedan för att förnya eller fortsätta din fondbytesinformation."
+        title="Dags att förnya din tjänst!"
+        text="Tack för fortsatt förtroende. Välj önskat alternativ nedan."
       />
 
       <section className="section renew">
