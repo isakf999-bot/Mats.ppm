@@ -1,0 +1,10 @@
+.stripe-pricing {
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.stripe-pricing stripe-pricing-table {
+  display: block;
+  width: 100%;
+}

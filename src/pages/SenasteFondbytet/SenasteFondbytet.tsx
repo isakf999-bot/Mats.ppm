@@ -22,9 +22,12 @@ export default function SenasteFondbytet() {
 
     try {
       await submitFormWebhook({
-        type: 'latest-fund',
-        email: String(data.get('email') ?? '').trim(),
-        source: '/senaste-fondbytet',
+        formdata: 'fondbyte',
+        email: String(data.get('email') ?? ''),
+        first_name: '',
+        last_name: '',
+        phone: '',
+        message: '',
       })
       setSent(true)
     } catch (err) {

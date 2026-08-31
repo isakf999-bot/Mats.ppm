@@ -15,6 +15,7 @@ import UppdateraUppgifter from './pages/UppdateraUppgifter/UppdateraUppgifter'
 import AllmannaVillkor from './pages/AllmannaVillkor/AllmannaVillkor'
 import Integritetspolicy from './pages/Integritetspolicy/Integritetspolicy'
 import Skool from './pages/Skool/Skool'
+import Renew from './pages/Renew/Renew'
 import NotFound from './pages/NotFound/NotFound'
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
           <Route path="/senaste-fondbytet" element={<SenasteFondbytet />} />
           <Route path="/nyhetsarkiv" element={<Nyhetsarkiv />} />
           <Route path="/skool" element={<Skool />} />
+          <Route path="/renew" element={<Renew />} />
 
           {/* Resultat */}
           <Route path="/mats-ppm-konto" element={<PpmKonto />} />

@@ -58,6 +58,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       'Ett digitalt community för stabil och medveten framtid – långsiktigt sparande, marknadsförståelse, mindset och tryggt lärande tillsammans.',
     path: '/skool',
   },
+  '/renew': {
+    title: 'Förnya abonnemang | Mats Svensson',
+    description:
+      'Förnya ditt abonnemang på Mats fondbytesinformation – välj paket och betala säkert via Stripe.',
+    path: '/renew',
+  },
   '/mats-ppm-konto': {
     title: 'Mats PPM-konto | Resultat',
     description:

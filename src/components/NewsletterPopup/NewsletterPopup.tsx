@@ -58,12 +58,12 @@ export default function NewsletterPopup() {
 
     try {
       await submitFormWebhook({
-        type: 'newsletter',
-        firstName: String(data.get('fornamn') ?? '').trim(),
-        lastName: String(data.get('efternamn') ?? '').trim(),
-        email: String(data.get('epost') ?? '').trim(),
-        consent: data.get('consent') != null,
-        source: 'newsletter-popup',
+        formdata: 'newsletter',
+        first_name: String(data.get('fornamn') ?? ''),
+        last_name: String(data.get('efternamn') ?? ''),
+        email: String(data.get('epost') ?? ''),
+        phone: '',
+        message: '',
       })
       markDismissed()
       setSent(true)

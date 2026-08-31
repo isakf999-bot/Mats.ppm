@@ -22,9 +22,12 @@ export default function UppdateraUppgifter() {
 
     try {
       await submitFormWebhook({
-        type: 'update',
-        email: String(data.get('email') ?? '').trim(),
-        source: '/uppdatera-kunduppgifter',
+        formdata: 'update',
+        email: String(data.get('email') ?? ''),
+        first_name: '',
+        last_name: '',
+        phone: '',
+        message: '',
       })
       setSent(true)
     } catch (err) {

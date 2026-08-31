@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Button from '../ui/Button'
+import StripeCheckoutModal from '../StripeCheckoutModal/StripeCheckoutModal'
 import { useReveal } from '../../hooks/useReveal'
 import './PricingSection.css'
 
@@ -48,6 +49,7 @@ const formatKr = (n: number) => new Intl.NumberFormat('sv-SE').format(n)
 
 export default function PricingSection() {
   const [yearly, setYearly] = useState(false)
+  const [checkoutOpen, setCheckoutOpen] = useState(false)
   const ref = useReveal<HTMLDivElement>()
   const gridRef = useReveal<HTMLDivElement>({ threshold: 0.15 })
 
@@ -109,9 +111,10 @@ export default function PricingSection() {
               </div>
 
               <Button
-                href="#kontakt"
+                type="button"
                 variant={plan.featured ? 'primary' : 'navy'}
                 full
+                onClick={() => setCheckoutOpen(true)}
               >
                 Abonnera
               </Button>
@@ -131,6 +134,12 @@ export default function PricingSection() {
           ))}
         </div>
       </div>
+
+      <StripeCheckoutModal
+        open={checkoutOpen}
+        onClose={() => setCheckoutOpen(false)}
+        variant="home"
+      />
     </section>
   )
 }

@@ -3,6 +3,7 @@ import Button from '../ui/Button'
 import {
   FORM_ERROR_FALLBACK,
   FormWebhookError,
+  splitFullName,
   submitFormWebhook,
 } from '../../lib/webhook'
 import './ContactForm.css'
@@ -29,12 +30,11 @@ export default function ContactForm({
 
     try {
       await submitFormWebhook({
-        type: 'contact',
-        name: String(data.get('namn') ?? '').trim(),
-        email: String(data.get('epost') ?? '').trim(),
-        phone: String(data.get('telefon') ?? '').trim() || undefined,
-        message: String(data.get('meddelande') ?? '').trim() || undefined,
-        source: window.location.pathname,
+        formdata: 'support',
+        ...splitFullName(String(data.get('namn') ?? '')),
+        email: String(data.get('epost') ?? ''),
+        phone: String(data.get('telefon') ?? ''),
+        message: String(data.get('meddelande') ?? ''),
       })
       setSent(true)
     } catch (err) {
