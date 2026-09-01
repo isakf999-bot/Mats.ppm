@@ -4,6 +4,7 @@ import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 import SeoHead from '../SeoHead/SeoHead'
 import NewsletterPopup from '../NewsletterPopup/NewsletterPopup'
+import CookieBanner from '../CookieBanner/CookieBanner'
 
 /** Scrollar till toppen vid sidbyte (men respekterar #ankarlänkar). */
 function ScrollToTop() {
@@ -31,6 +32,7 @@ export default function Layout() {
       </main>
       <Footer />
       <NewsletterPopup />
+      <CookieBanner />
     </>
   )
 }

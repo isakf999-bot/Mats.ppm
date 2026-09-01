@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react'
 import PageHero from '../../components/PageHero/PageHero'
 import Button from '../../components/ui/Button'
+import Spinner from '../../components/ui/Spinner'
 import {
   FORM_ERROR_FALLBACK,
   FormWebhookError,
@@ -10,6 +11,9 @@ import '../shared/pageShared.css'
 
 export default function UppdateraUppgifter() {
   const [sent, setSent] = useState(false)
+  const [successMessage, setSuccessMessage] = useState(
+    'Tack! Om din e-post finns som kund skickar vi en länk där du kan uppdatera dina uppgifter.',
+  )
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -21,7 +25,7 @@ export default function UppdateraUppgifter() {
     const data = new FormData(e.currentTarget)
 
     try {
-      await submitFormWebhook({
+      const message = await submitFormWebhook({
         formdata: 'update',
         email: String(data.get('email') ?? ''),
         first_name: '',
@@ -29,6 +33,7 @@ export default function UppdateraUppgifter() {
         phone: '',
         message: '',
       })
+      setSuccessMessage(message)
       setSent(true)
     } catch (err) {
       setError(
@@ -55,8 +60,7 @@ export default function UppdateraUppgifter() {
 
           {sent ? (
             <p className="page-form__success" role="status">
-              Tack! Om din e-post finns som kund skickar vi en länk där du kan
-              uppdatera dina uppgifter.
+              {successMessage}
             </p>
           ) : (
             <form className="page-form" onSubmit={onSubmit}>
@@ -72,8 +76,19 @@ export default function UppdateraUppgifter() {
                 required
                 disabled={submitting}
               />
-              <Button type="submit" variant="primary" arrow disabled={submitting}>
-                {submitting ? 'Skickar…' : 'Skicka'}
+              <Button
+                type="submit"
+                variant="primary"
+                arrow={!submitting}
+                disabled={submitting}
+              >
+                {submitting ? (
+                  <>
+                    <Spinner /> Väntar…
+                  </>
+                ) : (
+                  'Skicka'
+                )}
               </Button>
               {error && (
                 <p className="page-form__error" role="alert">

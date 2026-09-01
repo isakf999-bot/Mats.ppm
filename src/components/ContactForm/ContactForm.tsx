@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react'
 import Button from '../ui/Button'
+import Spinner from '../ui/Spinner'
 import {
   FORM_ERROR_FALLBACK,
   FormWebhookError,
@@ -18,6 +19,9 @@ export default function ContactForm({
   text = 'Kontakta oss eller fyll i formuläret så kontaktar vi dig.',
 }: ContactFormProps) {
   const [sent, setSent] = useState(false)
+  const [successMessage, setSuccessMessage] = useState(
+    'Tack! Vi hör av oss så snart vi kan.',
+  )
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -29,13 +33,14 @@ export default function ContactForm({
     const data = new FormData(e.currentTarget)
 
     try {
-      await submitFormWebhook({
+      const message = await submitFormWebhook({
         formdata: 'support',
         ...splitFullName(String(data.get('namn') ?? '')),
         email: String(data.get('epost') ?? ''),
         phone: String(data.get('telefon') ?? ''),
         message: String(data.get('meddelande') ?? ''),
       })
+      setSuccessMessage(message)
       setSent(true)
     } catch (err) {
       setError(
@@ -122,12 +127,23 @@ export default function ContactForm({
           />
         </div>
         <div className="contact-form__actions">
-          <Button type="submit" variant="primary" arrow disabled={submitting || sent}>
-            {submitting ? 'Skickar…' : 'Skicka meddelande'}
+          <Button
+            type="submit"
+            variant="primary"
+            arrow={!submitting}
+            disabled={submitting || sent}
+          >
+            {submitting ? (
+              <>
+                <Spinner /> Väntar…
+              </>
+            ) : (
+              'Skicka meddelande'
+            )}
           </Button>
           {sent && (
             <span className="contact-form__hint" role="status">
-              Tack! Vi hör av oss så snart vi kan.
+              {successMessage}
             </span>
           )}
           {error && (

@@ -1,6 +1,22 @@
 /**
  * Gemensam Make-webhook för alla sajtformulär.
- * JSON-formatet är alltid samma; saknade fält skickas som tom sträng.
+ *
+ * Request (alltid samma nycklar):
+ * {
+ *   "formdata": "newsletter" | "fondbyte" | "update" | "support",
+ *   "email": "",
+ *   "first_name": "",
+ *   "last_name": "",
+ *   "phone": "",
+ *   "date": "2026-08-30T12:23:00Z",
+ *   "message": ""
+ * }
+ *
+ * Response (väntas efter hela backendflödet):
+ * {
+ *   "status": "ok" | "error",
+ *   "response": "Text som visas för användaren"
+ * }
  */
 
 export type FormDataKind = 'newsletter' | 'fondbyte' | 'update' | 'support'
@@ -24,6 +40,11 @@ export interface FormWebhookPayload {
   message: string
 }
 
+export interface FormWebhookResult {
+  status: 'ok' | 'error'
+  response: string
+}
+
 export class FormWebhookError extends Error {
   constructor(message: string) {
     super(message)
@@ -34,6 +55,7 @@ export class FormWebhookError extends Error {
 const DEFAULT_WEBHOOK_URL =
   'https://hook.eu1.make.com/murkjy9galtfrb8vpq6i6j1670y7ta8z'
 const DEFAULT_API_KEY = 'woskguthek4567'
+const REQUEST_TIMEOUT_MS = 45000
 
 function getWebhookUrl(): string {
   return (
@@ -63,13 +85,53 @@ export function utcNow(): string {
   return new Date().toISOString().replace(/\.\d{3}Z$/, 'Z')
 }
 
+function parseWebhookBody(raw: string): FormWebhookResult | null {
+  if (!raw.trim()) return null
+  try {
+    const data = JSON.parse(raw) as Record<string, unknown>
+    const statusRaw = String(data.status ?? data.Status ?? '').toLowerCase()
+    const response = String(
+      data.response ?? data.Response ?? data.message ?? '',
+    ).trim()
+
+    if (statusRaw === 'ok' || statusRaw === 'success' || statusRaw === 'true') {
+      return {
+        status: 'ok',
+        response: response || 'Tack! Vi har tagit emot dina uppgifter.',
+      }
+    }
+
+    if (
+      statusRaw === 'error' ||
+      statusRaw === 'fail' ||
+      statusRaw === 'failed' ||
+      statusRaw === 'false'
+    ) {
+      return {
+        status: 'error',
+        response:
+          response ||
+          'Något gick fel. Försök igen om en stund.',
+      }
+    }
+
+    // Om bara "response" finns utan status – behandla HTTP 2xx + text som ok
+    if (response) {
+      return { status: 'ok', response }
+    }
+  } catch {
+    return null
+  }
+  return null
+}
+
 /**
- * Skickar formulärdata till Make-webhooken.
- * Alla nycklar finns alltid med – saknade värden blir "".
+ * Skickar formulärdata och väntar på backend-svar.
+ * Returnerar success-meddelande, eller kastar FormWebhookError.
  */
 export async function submitFormWebhook(
   fields: FormWebhookFields,
-): Promise<void> {
+): Promise<string> {
   const url = getWebhookUrl()
   const apiKey = getApiKey()
 
@@ -89,6 +151,9 @@ export async function submitFormWebhook(
     message: empty(fields.message),
   }
 
+  const controller = new AbortController()
+  const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
+
   let response: Response
   try {
     response = await fetch(url, {
@@ -99,11 +164,29 @@ export async function submitFormWebhook(
         'x-make-apikey': apiKey,
       },
       body: JSON.stringify(body),
+      signal: controller.signal,
     })
-  } catch {
+  } catch (err) {
+    if (err instanceof DOMException && err.name === 'AbortError') {
+      throw new FormWebhookError(
+        'Det tog för lång tid. Försök igen om en stund.',
+      )
+    }
     throw new FormWebhookError(
       'Kunde inte nå servern. Kontrollera din uppkoppling och försök igen.',
     )
+  } finally {
+    window.clearTimeout(timeout)
+  }
+
+  const raw = await response.text().catch(() => '')
+  const parsed = parseWebhookBody(raw)
+
+  if (parsed) {
+    if (parsed.status === 'error') {
+      throw new FormWebhookError(parsed.response)
+    }
+    return parsed.response
   }
 
   if (!response.ok) {
@@ -111,6 +194,9 @@ export async function submitFormWebhook(
       'Något gick fel vid skickandet. Försök igen om en stund.',
     )
   }
+
+  // 2xx utan JSON – fallback success
+  return 'Tack! Vi har tagit emot dina uppgifter.'
 }
 
 export const FORM_ERROR_FALLBACK =

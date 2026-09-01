@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useId, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Button from '../ui/Button'
+import Spinner from '../ui/Spinner'
 import {
   FORM_ERROR_FALLBACK,
   FormWebhookError,
@@ -33,6 +34,9 @@ export default function NewsletterPopup() {
   const formId = useId()
   const [visible, setVisible] = useState(false)
   const [sent, setSent] = useState(false)
+  const [successMessage, setSuccessMessage] = useState(
+    'Tack! Du är nu anmäld till nyhetsbrevet.',
+  )
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -57,7 +61,7 @@ export default function NewsletterPopup() {
     const data = new FormData(form)
 
     try {
-      await submitFormWebhook({
+      const message = await submitFormWebhook({
         formdata: 'newsletter',
         first_name: String(data.get('fornamn') ?? ''),
         last_name: String(data.get('efternamn') ?? ''),
@@ -66,6 +70,7 @@ export default function NewsletterPopup() {
         message: '',
       })
       markDismissed()
+      setSuccessMessage(message)
       setSent(true)
     } catch (err) {
       setError(
@@ -115,7 +120,7 @@ export default function NewsletterPopup() {
 
         {sent ? (
           <p className="nl-popup__success" role="status">
-            Tack! Du är nu anmäld till nyhetsbrevet.
+            {successMessage}
           </p>
         ) : (
           <form className="nl-popup__form" onSubmit={onSubmit} noValidate={false}>
@@ -182,11 +187,17 @@ export default function NewsletterPopup() {
               <Button
                 type="submit"
                 variant="primary"
-                arrow
+                arrow={!submitting}
                 className="nl-popup__submit"
                 disabled={submitting}
               >
-                {submitting ? 'Skickar…' : 'Skicka'}
+                {submitting ? (
+                  <>
+                    <Spinner /> Väntar…
+                  </>
+                ) : (
+                  'Skicka'
+                )}
               </Button>
             </div>
 

@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react'
 import PageHero from '../../components/PageHero/PageHero'
 import Button from '../../components/ui/Button'
+import Spinner from '../../components/ui/Spinner'
 import {
   FORM_ERROR_FALLBACK,
   FormWebhookError,
@@ -10,6 +11,9 @@ import '../shared/pageShared.css'
 
 export default function SenasteFondbytet() {
   const [sent, setSent] = useState(false)
+  const [successMessage, setSuccessMessage] = useState(
+    'Tack! Om din e-post finns som kund skickar vi senaste fondvalet till dig.',
+  )
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -21,7 +25,7 @@ export default function SenasteFondbytet() {
     const data = new FormData(e.currentTarget)
 
     try {
-      await submitFormWebhook({
+      const message = await submitFormWebhook({
         formdata: 'fondbyte',
         email: String(data.get('email') ?? ''),
         first_name: '',
@@ -29,6 +33,7 @@ export default function SenasteFondbytet() {
         phone: '',
         message: '',
       })
+      setSuccessMessage(message)
       setSent(true)
     } catch (err) {
       setError(
@@ -66,8 +71,7 @@ export default function SenasteFondbytet() {
 
             {sent ? (
               <p className="page-form__success" role="status">
-                Tack! Om din e-post finns som kund skickar vi senaste fondvalet
-                till dig.
+                {successMessage}
               </p>
             ) : (
               <form className="signup__body" onSubmit={onSubmit}>
@@ -85,8 +89,19 @@ export default function SenasteFondbytet() {
                     required
                     disabled={submitting}
                   />
-                  <Button type="submit" variant="primary" arrow disabled={submitting}>
-                    {submitting ? 'Skickar…' : 'Skicka'}
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    arrow={!submitting}
+                    disabled={submitting}
+                  >
+                    {submitting ? (
+                      <>
+                        <Spinner /> Väntar…
+                      </>
+                    ) : (
+                      'Skicka'
+                    )}
                   </Button>
                 </div>
                 {error && (
