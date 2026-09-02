@@ -5,6 +5,7 @@ import {
   applyConsent,
   getStoredConsent,
   initConsentDefaults,
+  OPEN_COOKIE_BANNER_EVENT,
   type ConsentValue,
 } from '../../lib/consent'
 import './CookieBanner.css'
@@ -17,13 +18,15 @@ export default function CookieBanner() {
     const stored = getStoredConsent()
     if (stored === 'granted') {
       applyConsent('granted')
-      return
-    }
-    if (stored === 'denied') {
+    } else if (stored === 'denied') {
       applyConsent('denied')
-      return
+    } else {
+      setVisible(true)
     }
-    setVisible(true)
+
+    const open = () => setVisible(true)
+    window.addEventListener(OPEN_COOKIE_BANNER_EVENT, open)
+    return () => window.removeEventListener(OPEN_COOKIE_BANNER_EVENT, open)
   }, [])
 
   const choose = (value: ConsentValue) => {

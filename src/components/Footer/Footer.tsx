@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Logo from '../Logo/Logo'
+import { openCookieBanner } from '../../lib/consent'
 import './Footer.css'
 
 type IconName = 'facebook' | 'youtube' | 'instagram'
@@ -91,6 +92,14 @@ export default function Footer() {
             <Link to="/integritetspolicy">Integritetspolicy</Link>
             <span aria-hidden="true">|</span>
             <Link to="/allmanna-villkor">Allmänna villkor</Link>
+            <span aria-hidden="true">|</span>
+            <button
+              type="button"
+              className="footer__cookie-btn"
+              onClick={openCookieBanner}
+            >
+              Cookies
+            </button>
           </nav>
           <p className="footer__copy">
             © Mats Svensson 2026 | Producerad av{' '}

@@ -363,38 +363,6 @@
   border: 0;
 }
 
-/* ---- Platshållare för innehåll vi ännu inte har ---- */
-.page-placeholder {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
-  max-width: 760px;
-  margin-top: var(--space-4);
-  padding: var(--space-4);
-  background: var(--color-bg-cream);
-  border: 1px dashed rgba(242, 168, 29, 0.5);
-  border-radius: var(--radius-lg);
-}
-.page-placeholder__icon {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  border-radius: var(--radius-pill);
-  background: rgba(242, 168, 29, 0.22);
-  color: var(--color-gold-hover);
-  font-family: var(--font-display);
-  font-weight: 700;
-}
-.page-placeholder p {
-  font-size: var(--fs-small);
-  color: var(--color-body);
-}
-.page-placeholder strong {
-  color: var(--color-ink);
-}
-
 @media (max-width: 760px) {
   .page-videos {
     grid-template-columns: 1fr;

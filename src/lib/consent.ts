@@ -1,7 +1,13 @@
 const CONSENT_KEY = 'mats-cookie-consent'
 export const GTM_ID = 'GTM-M27JH4J'
+/** Custom event: öppna cookie-bannern igen (t.ex. från footer). */
+export const OPEN_COOKIE_BANNER_EVENT = 'mats:open-cookie-banner'
 
 export type ConsentValue = 'granted' | 'denied'
+
+export function openCookieBanner() {
+  window.dispatchEvent(new Event(OPEN_COOKIE_BANNER_EVENT))
+}
 
 declare global {
   interface Window {
