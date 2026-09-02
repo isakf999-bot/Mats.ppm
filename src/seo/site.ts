@@ -1,5 +1,14 @@
-/** Bas-URL för canonical, OG och sitemap. */
-export const SITE_URL = 'https://mats-svensson.se'
+/** Bas-URL för canonical, OG och sitemap. Sätts via VITE_SITE_URL. */
+function resolveSiteUrl(): string {
+  const raw =
+    (typeof import.meta !== 'undefined' &&
+      import.meta.env &&
+      (import.meta.env.VITE_SITE_URL as string | undefined)) ||
+    'https://mats-svensson.se'
+  return String(raw).replace(/\/$/, '')
+}
+
+export const SITE_URL = resolveSiteUrl()
 
 export type ChangeFreq =
   | 'always'
@@ -255,6 +264,16 @@ export function buildSitemapXml(entries: SitemapEntry[] = getSitemapEntries()): 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls}
 </urlset>
+`
+}
+
+/** robots.txt med sitemap på samma host som SITE_URL. */
+export function buildRobotsTxt(siteUrl: string = SITE_URL): string {
+  const base = siteUrl.replace(/\/$/, '')
+  return `User-agent: *
+Allow: /
+
+Sitemap: ${base}/sitemap.xml
 `
 }
 

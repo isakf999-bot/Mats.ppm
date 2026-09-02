@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mats-svensson.se/sitemap.xml
+Sitemap: https://mats-ppm.vercel.app/sitemap.xml

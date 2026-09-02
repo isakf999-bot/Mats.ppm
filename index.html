@@ -19,7 +19,7 @@
       content="Följ Mats Svenssons aktiva fondsparande i realtid. Få insyn i fondbyten för PPM och ISK – utan rådgivning, med full transparens sedan 2010."
     />
 
-    <link rel="canonical" href="https://mats-svensson.se/" />
+    <link rel="canonical" href="%VITE_SITE_URL%/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
@@ -28,13 +28,13 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="sv_SE" />
     <meta property="og:site_name" content="Mats Svensson" />
-    <meta property="og:url" content="https://mats-svensson.se/" />
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
     <meta property="og:title" content="Mats Svensson – Insyn i ett aktivt fondsparande" />
     <meta
       property="og:description"
       content="Följ Mats Svenssons aktiva fondsparande i realtid. Fondbyten för PPM och ISK med full transparens."
     />
-    <meta property="og:image" content="https://mats-svensson.se/og-image.png" />
+    <meta property="og:image" content="%VITE_SITE_URL%/og-image.png" />
     <meta property="og:image:alt" content="Mats Svensson – fondbytesinformation" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -46,7 +46,7 @@
       name="twitter:description"
       content="Följ Mats Svenssons aktiva fondsparande i realtid. Fondbyten för PPM och ISK med full transparens."
     />
-    <meta name="twitter:image" content="https://mats-svensson.se/og-image.png" />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/og-image.png" />
     <meta name="twitter:image:alt" content="Mats Svensson – fondbytesinformation" />
 
     <script type="application/ld+json">
@@ -55,11 +55,11 @@
         "@graph": [
           {
             "@type": "Organization",
-            "@id": "https://mats-svensson.se/#organization",
+            "@id": "%VITE_SITE_URL%/#organization",
             "name": "Mats Svensson 2000 AB",
-            "url": "https://mats-svensson.se/",
+            "url": "%VITE_SITE_URL%/",
             "email": "info@mats-svensson.se",
-            "logo": "https://mats-svensson.se/apple-touch-icon.png",
+            "logo": "%VITE_SITE_URL%/apple-touch-icon.png",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Henry Dunkers plats 4",
@@ -71,50 +71,104 @@
           },
           {
             "@type": "Person",
-            "@id": "https://mats-svensson.se/#person",
+            "@id": "%VITE_SITE_URL%/#person",
             "name": "Mats Svensson",
             "jobTitle": "Fondbytesinformationsleverantör",
-            "worksFor": { "@id": "https://mats-svensson.se/#organization" },
-            "url": "https://mats-svensson.se/om-mats-svensson"
+            "worksFor": { "@id": "%VITE_SITE_URL%/#organization" },
+            "url": "%VITE_SITE_URL%/om-mats-svensson"
           },
           {
             "@type": "WebSite",
-            "@id": "https://mats-svensson.se/#website",
-            "url": "https://mats-svensson.se/",
+            "@id": "%VITE_SITE_URL%/#website",
+            "url": "%VITE_SITE_URL%/",
             "name": "Mats Svensson – Fondbytesinformation",
             "description": "Insyn i ett aktivt fondsparande i realtid för PPM och ISK.",
-            "publisher": { "@id": "https://mats-svensson.se/#organization" },
+            "publisher": { "@id": "%VITE_SITE_URL%/#organization" },
             "inLanguage": "sv-SE"
           },
           {
             "@type": "WebPage",
-            "@id": "https://mats-svensson.se/#webpage",
-            "url": "https://mats-svensson.se/",
+            "@id": "%VITE_SITE_URL%/#webpage",
+            "url": "%VITE_SITE_URL%/",
             "name": "Mats Svensson – Insyn i ett aktivt fondsparande",
-            "isPartOf": { "@id": "https://mats-svensson.se/#website" },
-            "about": { "@id": "https://mats-svensson.se/#person" },
+            "isPartOf": { "@id": "%VITE_SITE_URL%/#website" },
+            "about": { "@id": "%VITE_SITE_URL%/#person" },
             "description": "Följ Mats Svenssons aktiva fondsparande i realtid. Fondbyten för PPM och ISK med full transparens.",
             "inLanguage": "sv-SE"
           },
           {
             "@type": "Service",
             "name": "Mats fondbytesinformation",
-            "provider": { "@id": "https://mats-svensson.se/#organization" },
+            "provider": { "@id": "%VITE_SITE_URL%/#organization" },
             "areaServed": "SE",
             "description": "Information om Mats Svenssons fondbyten i PPM och ISK – sms, e-post och marknadsanalys.",
-            "url": "https://mats-svensson.se/erbjudandet"
+            "url": "%VITE_SITE_URL%/erbjudandet"
           }
         ]
       }
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <!--
+      Crawlbar shell: syns i första HTML-svaret (SEO/crawlers).
+      React ersätter #root vid hydrering – ingen dubbel UI för användare med JS.
+    -->
+    <div id="root">
+      <a class="skip-link" href="#main-content">Hoppa till innehållet</a>
+      <header>
+        <nav aria-label="Huvudmeny">
+          <a href="/">Hem</a>
+          <a href="/erbjudandet">Erbjudandet</a>
+          <a href="/bli-kund">Bli kund</a>
+          <a href="/mats-ppm-konto">Mats PPM-konto</a>
+          <a href="/statistik">Statistik</a>
+          <a href="/om-mats-svensson">Om Mats Svensson</a>
+          <a href="/kundtjanst">Kundtjänst</a>
+          <a href="/fragor-svar">Frågor &amp; svar</a>
+          <a href="/skool">Skool</a>
+        </nav>
+      </header>
+      <main id="main-content">
+        <h1>Insyn i ett aktivt fondsparande – i realtid</h1>
+        <p>
+          Följ hur jag själv arbetar med mitt fondsparande och ta del av
+          resonemanget bakom varje förändring över tid. Ingen rådgivning. Inga
+          personliga rekommendationer. Bara full transparens i hur jag själv
+          agerar och tänker kring marknaden.
+        </p>
+        <p>
+          Sedan 2010 har tusentals kunder tagit del av Mats fondbytesinformation
+          för PPM och ISK – med sms och e-post samma dag som fondbyten sker, plus
+          marknadsanalys via nyhetsbrev.
+        </p>
+        <h2>Vad du får tillgång till</h2>
+        <ul>
+          <li><a href="/erbjudandet">Vad Mats Svensson erbjuder</a> – så fungerar fondbytesinformationen</li>
+          <li><a href="/bli-kund">Bli kund</a> – abonnemang för PPM eller PPM &amp; ISK</li>
+          <li><a href="/mats-ppm-konto">Mats PPM-konto</a> – historik år för år</li>
+          <li><a href="/statistik">Statistik</a> – värdeutveckling över tid</li>
+          <li><a href="/sa-har-byter-du-fond">Så här byter du fonder</a> – praktiska guider</li>
+          <li><a href="/om-mats-svensson">Om Mats Svensson</a> – bakgrund och resa</li>
+          <li><a href="/kundtjanst">Kundtjänst</a> – support och kontakt</li>
+        </ul>
+      </main>
+      <footer>
+        <p>
+          <a href="/allmanna-villkor">Allmänna villkor</a>
+          ·
+          <a href="/integritetspolicy">Integritetspolicy</a>
+          ·
+          <a href="mailto:info@mats-svensson.se">info@mats-svensson.se</a>
+        </p>
+      </footer>
+    </div>
     <noscript>
       <p>
-        Mats Svensson – insyn i ett aktivt fondsparande i realtid. För full funktionalitet behöver du aktivera JavaScript.
-        Kontakta <a href="mailto:info@mats-svensson.se">info@mats-svensson.se</a>
-        eller besök <a href="https://mats-svensson.se/erbjudandet">erbjudandet</a>.
+        Mats Svensson – insyn i ett aktivt fondsparande i realtid. För full
+        funktionalitet behöver du aktivera JavaScript. Kontakta
+        <a href="mailto:info@mats-svensson.se">info@mats-svensson.se</a>
+        eller läs mer om
+        <a href="/erbjudandet">erbjudandet</a>.
       </p>
     </noscript>
     <script type="module" src="/src/main.tsx"></script>
