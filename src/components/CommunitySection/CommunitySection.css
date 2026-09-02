@@ -1,0 +1,44 @@
+.community {
+  background: var(--color-bg-lavender);
+}
+
+.community__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-7);
+}
+
+.community__content .eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+.community__text {
+  color: var(--color-body);
+  margin-block: var(--space-3);
+  max-width: 500px;
+}
+
+.community__content .btn {
+  margin-top: var(--space-3);
+}
+
+.community__img {
+  width: 100%;
+  /* Native-upplösning är 269px – tak för att undvika upplösnings-uppskalning/suddighet */
+  max-width: 340px;
+  height: auto;
+  margin-inline: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 860px) {
+  .community__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  .community__media {
+    order: -1;
+  }
+}

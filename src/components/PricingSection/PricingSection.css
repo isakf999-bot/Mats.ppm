@@ -1,0 +1,7 @@
+.pricing__inner {
+  text-align: center;
+}
+
+.pricing__inner .section-heading {
+  margin-bottom: var(--space-6);
+}

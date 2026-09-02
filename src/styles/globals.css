@@ -1,0 +1,254 @@
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@400,500,700&display=swap');
+@import './theme.css';
+
+/* ============================================================
+   GLOBAL RESET & BASE
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: var(--color-body);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+  line-height: 1.14;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-wrap: balance; /* undviker orphan-ord i rubriker */
+}
+
+p {
+  text-wrap: pretty; /* undviker enstaka ord på sista raden */
+}
+
+/* Tabellsiffror – jämn bredd på alla data-/prissiffror */
+.tabular-nums,
+.price-card__amount,
+.price-card__period,
+.calc__result-amount,
+.calc-field__value,
+.ppm__year {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Subtil film-grain – en enda fixerad, icke-interaktiv overlay (GPU-vänlig).
+   Bryter den digitala plattheten utan att störa läsbarheten. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 500; /* enda globala textur-lagret, ovanför allt men pointer-events:none */
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after { opacity: 0.025; }
+}
+
+/* Skip-länk för tangentbord / tillgänglighet (teknisk SEO) */
+.skip-link {
+  position: absolute;
+  left: var(--space-3);
+  top: -100px;
+  z-index: 1000;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--color-navy);
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  transition: top 0.2s var(--ease);
+}
+.skip-link:focus {
+  top: var(--space-3);
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input,
+select {
+  font-family: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   LAYOUT HELPERS
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.section {
+  padding-block: var(--space-8);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-block: var(--space-7);
+  }
+}
+
+/* Eyebrow / small kicker label */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-caption);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold-hover);
+}
+
+/* Pill-formad eyebrow-tag ovanför centrerade sektionsrubriker */
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin: 0 auto var(--space-3);
+  padding: 6px 15px;
+  border-radius: var(--radius-pill);
+  background: rgba(242, 168, 29, 0.1);
+  border: 1px solid rgba(242, 168, 29, 0.28);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-caption);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold-hover);
+}
+.section-eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.section-heading {
+  font-size: var(--fs-h2);
+  color: var(--color-ink);
+}
+
+.section-heading--center {
+  text-align: center;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+/* ============================================================
+   ENTRANCE ANIMATION (scroll-reveal)
+   Content är synligt direkt; animationen förstärker bara.
+   ============================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Tyngre, cinematisk entré: fade-up + mjuk blur → skarp */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(8px);
+    transition: opacity 0.85s var(--ease), transform 0.85s var(--ease),
+      filter 0.85s var(--ease);
+    will-change: opacity, transform, filter;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+
+  /* Stagger: direkta barn kaskaderar in med små fördröjningar.
+     Liten förflyttning så den inte adderas för hårt med container-reveal. */
+  .stagger > * {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  }
+  .stagger.is-visible > * {
+    opacity: 1;
+    transform: none;
+  }
+  .stagger.is-visible > *:nth-child(1) { transition-delay: 0.04s; }
+  .stagger.is-visible > *:nth-child(2) { transition-delay: 0.12s; }
+  .stagger.is-visible > *:nth-child(3) { transition-delay: 0.2s; }
+  .stagger.is-visible > *:nth-child(4) { transition-delay: 0.28s; }
+  .stagger.is-visible > *:nth-child(5) { transition-delay: 0.36s; }
+  .stagger.is-visible > *:nth-child(6) { transition-delay: 0.44s; }
+}
+
+/* Responsiv typografi */
+@media (max-width: 900px) {
+  :root {
+    --fs-h1: 2.5rem;
+    --fs-h2: 2rem;
+    --fs-h3: 1.5rem;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --fs-h1: 2.05rem;
+    --fs-h2: 1.7rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+}

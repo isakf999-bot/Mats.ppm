@@ -1,0 +1,64 @@
+.ppm__heading {
+  margin-bottom: var(--space-5);
+}
+
+/* ---- Årsväljare ---- */
+.ppm__years {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.ppm__year {
+  min-width: 62px;
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-family: var(--font-display);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--color-body);
+  box-shadow: var(--shadow-sm);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.ppm__year:hover {
+  background: rgba(242, 168, 29, 0.14);
+  color: var(--color-gold-hover);
+  border-color: rgba(242, 168, 29, 0.4);
+}
+.ppm__year.is-active {
+  background: rgba(242, 168, 29, 0.16);
+  color: var(--color-gold-hover);
+  border-color: var(--color-gold);
+}
+.ppm__year:active {
+  transform: scale(0.96);
+}
+
+.ppm__subheading {
+  font-size: var(--fs-h4);
+  margin-bottom: var(--space-4);
+}
+
+/* ---- Bild ---- */
+.ppm__figure {
+  margin: 0;
+}
+
+.ppm__img {
+  width: 100%;
+  height: auto;
+}
+
+.ppm__empty {
+  color: var(--color-muted);
+  font-size: var(--fs-small);
+}
+
+/* PPM-bilderna är porträtt/smala – begränsa ramens bredd så den inte blir enorm */
+.container > .ppm__figure {
+  max-width: 584px;
+}

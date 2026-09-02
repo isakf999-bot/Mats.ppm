@@ -1,0 +1,31 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo__img {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+/* Navbar: full logga ska få plats i sticky-baren */
+.navbar .logo__img {
+  height: 88px;
+}
+
+/* Enbart monogram: renderas större eftersom textdelen är borttagen */
+.logo--mark .logo__img {
+  height: 60px;
+}
+
+/* På mörk bakgrund (footer): guldlogga, något mer orange men fortfarande dämpad */
+.logo--light .logo__img {
+  filter: brightness(0) saturate(100%) invert(73%) sepia(32%) saturate(820%)
+    hue-rotate(3deg) brightness(95%) contrast(91%);
+}
+
+/* Footern: samma storlek som navbaren */
+.footer .logo__img {
+  height: 88px;
+}

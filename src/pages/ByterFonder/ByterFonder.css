@@ -1,0 +1,11 @@
+.guide__intro {
+  margin-bottom: var(--space-6);
+}
+
+.guide__heading {
+  margin-bottom: var(--space-2);
+}
+
+.guide-card .page-video__title {
+  font-size: var(--fs-h4);
+}

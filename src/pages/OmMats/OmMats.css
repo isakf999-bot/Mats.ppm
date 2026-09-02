@@ -1,0 +1,38 @@
+.om-mats__inner {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: start;
+  gap: var(--space-7);
+}
+
+.om-mats__media {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-5));
+}
+
+.om-mats__img {
+  width: 100%;
+  height: auto;
+}
+
+.om-mats__content a {
+  color: var(--color-navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--dur) var(--ease);
+}
+
+.om-mats__content a:hover {
+  color: var(--color-gold-hover);
+}
+
+@media (max-width: 900px) {
+  .om-mats__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  .om-mats__media {
+    position: static;
+  }
+}
