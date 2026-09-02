@@ -6,14 +6,19 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://mats-svensson.se/bli-kund</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://mats-svensson.se/erbjudandet</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mats-svensson.se/bli-kund</loc>
+    <loc>https://mats-svensson.se/mats-ppm-konto</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mats-svensson.se/sa-har-byter-du-fond</loc>
@@ -26,22 +31,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mats-svensson.se/nyhetsarkiv</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://mats-svensson.se/skool</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://mats-svensson.se/renew</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mats-svensson.se/mats-ppm-konto</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -49,6 +39,16 @@
     <loc>https://mats-svensson.se/statistik</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mats-svensson.se/fragor-svar</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mats-svensson.se/nyhetsarkiv</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://mats-svensson.se/om-mats-svensson</loc>
@@ -59,16 +59,6 @@
     <loc>https://mats-svensson.se/kundtjanst</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://mats-svensson.se/fragor-svar</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mats-svensson.se/uppdatera-kunduppgifter</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://mats-svensson.se/allmanna-villkor</loc>

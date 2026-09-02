@@ -1,14 +1,7 @@
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
 import Button from '../../components/ui/Button'
 
 export default function NotFound() {
-  useEffect(() => {
-    document.title = 'Sidan hittades inte | Mats Svensson'
-    const robots = document.head.querySelector('meta[name="robots"]')
-    if (robots) robots.setAttribute('content', 'noindex, follow')
-  }, [])
-
   return (
     <section className="section" style={{ paddingBlock: 'var(--space-8)' }}>
       <div
