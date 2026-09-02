@@ -249,6 +249,11 @@ export function getSitemapEntries(): SitemapEntry[] {
     .sort((a, b) => b.priority - a.priority || a.loc.localeCompare(b.loc))
 }
 
+/** Sidor som ska få egen prerenderad HTML (unik title i första HTML-svaret). */
+export function getPrerenderPages(): PageSeo[] {
+  return Object.values(PAGE_SEO).filter((page) => page.path !== '/')
+}
+
 export function buildSitemapXml(entries: SitemapEntry[] = getSitemapEntries()): string {
   const urls = entries
     .map(
