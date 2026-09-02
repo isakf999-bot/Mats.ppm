@@ -1,5 +1,5 @@
-/** Bas-URL för canonical, OG och sitemap. Byt när egen domän kopplas. */
-export const SITE_URL = 'https://mats-ppm.vercel.app'
+/** Bas-URL för canonical, OG och sitemap. */
+export const SITE_URL = 'https://mats-svensson.se'
 
 export interface PageSeo {
   title: string

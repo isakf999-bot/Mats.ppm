@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mats-ppm.vercel.app/</loc>
+    <loc>https://mats-svensson.se/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/erbjudandet</loc>
+    <loc>https://mats-svensson.se/erbjudandet</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/bli-kund</loc>
+    <loc>https://mats-svensson.se/bli-kund</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/sa-har-byter-du-fond</loc>
+    <loc>https://mats-svensson.se/sa-har-byter-du-fond</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/senaste-fondbytet</loc>
+    <loc>https://mats-svensson.se/senaste-fondbytet</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/nyhetsarkiv</loc>
+    <loc>https://mats-svensson.se/nyhetsarkiv</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/skool</loc>
+    <loc>https://mats-svensson.se/skool</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/renew</loc>
+    <loc>https://mats-svensson.se/renew</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/mats-ppm-konto</loc>
+    <loc>https://mats-svensson.se/mats-ppm-konto</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/statistik</loc>
+    <loc>https://mats-svensson.se/statistik</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/om-mats-svensson</loc>
+    <loc>https://mats-svensson.se/om-mats-svensson</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/kundtjanst</loc>
+    <loc>https://mats-svensson.se/kundtjanst</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/fragor-svar</loc>
+    <loc>https://mats-svensson.se/fragor-svar</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/uppdatera-kunduppgifter</loc>
+    <loc>https://mats-svensson.se/uppdatera-kunduppgifter</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/allmanna-villkor</loc>
+    <loc>https://mats-svensson.se/allmanna-villkor</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://mats-ppm.vercel.app/integritetspolicy</loc>
+    <loc>https://mats-svensson.se/integritetspolicy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
