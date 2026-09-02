@@ -10,3 +10,14 @@ dist-ssr
 
 vite.config.d.ts
 *.tsbuildinfo
+
+# Lokala Cursor/agent-filer – ska inte följa med till kundens repo
+.cursor/
+.claude/
+**/SKILL.md
+**/skills/
+AGENTS.md
+CLAUDE.md
+claude.md
+*.mdc
+*.md
