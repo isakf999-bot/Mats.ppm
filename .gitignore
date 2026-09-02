@@ -10,8 +10,3 @@ dist-ssr
 
 vite.config.d.ts
 *.tsbuildinfo
-
-claude.md
-CLAUDE.md
-
-.claude/skills/

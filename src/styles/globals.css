@@ -156,7 +156,7 @@ ul {
   color: var(--color-gold-hover);
 }
 
-/* Pill-formad eyebrow-tag ovanför centrerade sektionsrubriker (skill 4.C) */
+/* Pill-formad eyebrow-tag ovanför centrerade sektionsrubriker */
 .section-eyebrow {
   display: flex;
   align-items: center;
@@ -200,7 +200,7 @@ ul {
    ============================================================ */
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Tyngre, cinematisk entré: fade-up + mjuk blur → skarp (skill 5.C) */
+  /* Tyngre, cinematisk entré: fade-up + mjuk blur → skarp */
   .reveal {
     opacity: 0;
     transform: translateY(30px);
